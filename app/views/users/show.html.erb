@@ -1,0 +1,24 @@
+<h1>User Profile</h1>
+<div></div>
+  <p><%= @user.name %>
+   <%= image_tag @user.get_profile_image %></p>
+   <h4>Introduct</h4>
+  <p><%= @user.introduct %><p>
+
+  <h4>Mycar Introduct</h4>
+  <p><%= @user.car_introduct %></p>
+
+  <h4>Mycar Photo</h4>
+
+</div>
+
+<h4>投稿一覧</h4>
+<div>
+  <% @post.each do |post| %>
+  <p>
+  <%= link_to post.title, post_path(post.id) %>
+  </p>
+  <% end %>
+
+  <%= link_to "編集", edit_user_path %>
+</div>

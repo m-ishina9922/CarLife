@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CarLife</title>
+    <title>CarLife.</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -20,6 +20,14 @@
        <li>
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        </li>
+
+       <li>
+         <%= link_to "投稿する", new_post_path %>
+       </li>
+
+      <li>
+        <%= link_to image_tag(current_user.get_profile_image), user_path(current_user.id) %>
+      </li>
       <% else %>
        <li>
          <%= link_to "新規登録", new_user_registration_path %>
