@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :posts, only: [:new, :create, :show, :index]
+  resources :users, only: [:show, :edit, :update]
+
   devise_for :admin, controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions",
