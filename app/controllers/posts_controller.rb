@@ -21,8 +21,19 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post .id)
+  end
+
   def destroy
     @post = Post.find(params[:id])
+    @post.user.id == current_user.id
     @post.destroy
     redirect_to posts_path, notice: '削除しました'
   end
@@ -30,6 +41,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:reference_site, :products_used, :title)
+    params.require(:post).permit(:reference_site, :products_used,:title)
   end
 end
