@@ -15,4 +15,5 @@
  <p>
    <%= @post.products_used %>
  </p>
- 
+
+ <%= link_to "削除", post_path(@post.id), method: :delete %>

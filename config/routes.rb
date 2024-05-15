@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index'
-    resources :users, only: [:destroy]
+
+    resources :users, only: [:destroy, :show, :edit]
   end
 
   #ユーザー機能
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
 
 
   #投稿機能
-  resources :posts, only: [:new, :create, :show, :index]
+  resources :posts, only: [:new, :create, :show, :index, :destroy]
 
   #ゲストログイン機能
   devise_scope :user do
