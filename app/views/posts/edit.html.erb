@@ -1,0 +1,18 @@
+<h4>Post編集</h4>
+
+<%= form_with model: @post do |f| %>
+
+<p>Title</p>
+<%= f.text_field :title %>
+
+<h4>作業工程</h4>
+
+<p>参考にしたサイトURL</p>
+<%= f.text_field :reference_site %>
+
+<p>使用した商品</p>
+<%= f.text_field :products_used %>
+
+<%= f.submit '投稿' %>
+
+<% end %>
