@@ -1,0 +1,15 @@
+<h1>ユーザー情報</h1>
+
+<%= form_with model: @user do |f| %>
+<p>ユーザーID</p>
+ <p><%= @user.id %></p>
+
+<label for="inputName">Name</label>
+ <p><%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "ユーザー名" %></p>
+
+<label for="inputEmail">Email</label>
+ <p><%= f.text_field :email, autofocus: true, id: "inputEmail", placeholder: "e-mail" %></p>
+
+<h4>会員ステータス</h4>
+
+<% end %>
