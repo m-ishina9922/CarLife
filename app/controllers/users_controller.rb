@@ -16,6 +16,18 @@ class UsersController < ApplicationController
     redirect_to user_path
   end
 
+  # 論理削除処理
+  def withdraw
+    respond_with_navigational do
+      sign_out current_user
+      redirect_to "/"
+    end
+  end
+
+  def check
+    @user = User.find(current_user.id)
+  end
+
   private
   def is_matching_login_user
     user = User.find(params[:id])

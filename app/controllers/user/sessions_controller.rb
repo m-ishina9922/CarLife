@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
 class User::SessionsController < Devise::SessionsController
-
  before_action :configure_permitted_parameters, if: :devise_controller?
 
  #ゲストログイン機能
@@ -11,6 +9,7 @@ class User::SessionsController < Devise::SessionsController
     redirect_to about_path, notice: 'ゲストとしてログインしました'
   end
 
+ #ログイン機能
   def after_sign_in_path_for(resourced)
     posts_path
 
@@ -18,6 +17,16 @@ class User::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(resourced)
     about_path
+  end
+  
+  #退会後のログインを阻止する機能
+  def reject_inactive_user
+    @user = User.find(name: params[:user][:name])
+    if @user 
+      if @user.valid_password?(params[:user][:password]) && !@user.is_valid
+        redirecr_to new_user_session_path
+      end 
+    end 
   end
 
   protected
