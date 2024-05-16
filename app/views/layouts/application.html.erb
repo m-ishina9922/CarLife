@@ -6,46 +6,65 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/873b907858.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+
+  <body class="d-flex flex-column vh-100">
     <header>
-      <div class="logo">
-        <h2>CarLife.</h2>
+      <nav class="navbar navbar-expand-lg p-1 navbar-dark bg-dark">
+      <div class="container">
+        <div class="p-3 text-white "><a class="navbar-brand" href="/">CarLife.</a></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon" style="color: white;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarBavDropdown">
+          <ul class="navbar-nav ml-auto">
+
+             <% if user_signed_in? %>
+
+             <li class="nav-item">
+               <%= link_to "About", about_path %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+             </li>
+
+             <li class="nav-item">
+              <%= link_to "投稿する", new_post_path %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to image_tag(current_user.get_profile_image), user_path(current_user.id) %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to "ホーム", posts_path %>
+             </li>
+
+             <% else %>
+
+             <li class="nav-item">
+               <%= link_to "About", about_path %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to "新規登録", new_user_registration_path %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to "ログイン", new_user_session_path %>
+             </li>
+
+             <% end %>
+
+          </ul>
+        </div>
       </div>
-
-      <% if user_signed_in? %>
-       <li>
-         <%= link_to "About", about_path %>
-       </li>
-       <li>
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </li>
-
-       <li>
-         <%= link_to "投稿する", new_post_path %>
-       </li>
-
-      <li>
-        <%= link_to image_tag(current_user.get_profile_image), user_path(current_user.id) %>
-      </li>
-
-      <li>
-        <%= link_to "ホーム", posts_path %>
-      </li>
-      <% else %>
-       <li>
-         <%= link_to "About", about_path %>
-       </li>
-       <li>
-         <%= link_to "新規登録", new_user_registration_path %>
-       </li>
-       <li>
-         <%= link_to "ログイン", new_user_session_path %>
-       </li>
-      <% end %>
+      </nav>
     </header>
     <%= yield %>
   </body>
