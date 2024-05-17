@@ -1,26 +1,20 @@
 <h1>投稿画面</h1>
-<% if @post.errors.any? %>
- <%= @post.errors.count %> 件のエラーが発生しました
- <ul>
-   <% @post.errors.full_messages.each do |message| %>
-   <li><%= message %></li>
-   <% end %>
- </ul>
-<% end %>
 
-<%= form_with model: @post do |f| %>
 
-<h4>作業タイトル</h4>
-<%= f.text_field :title %>
+<%= form_with model: @post_form do |f| %>
+ <%= f.label :title, '作業タイトル' %>
+ <%= f.text_field :title %>
 
-<h4>作業工程</h4>
+ <%= f.label :text, '作業工程' %>
+ <%= f.text_field :text %>
 
-<h4>参考にしたサイトURL</h4>
-<%= f.text_field :reference_site %>
+ <%= f.label :reference_site, '参照サイトURL' %>
+ <%= f.text_field :reference_site %>
 
-<h4>使用した商品</h4>
-<%= f.text_field :products_used %>
+ <%= f.label :products_used, '使用した商品' %>
+ <%= f.text_field :products_used %>
 
-<%= f.submit '投稿' %>
+ <%= f.submit '投稿する' %>
 
-<% end %>
+ <% end %>
+
