@@ -17,19 +17,20 @@ class PostsForm
       ActiveRecord::Base.transaction do
         post = Post.create!(title: title, reference_site: reference_site, products_used: products_used)
         process_image = ProcessImage.create!(text: text)
-        tag = Tag.create!(name: name)
+
 
         post.process_images << process_image
-        post.tags << tag
+
       end
 
       true
     rescue ActiveRecord::RecordInvalid => e
       errors.add(:base, e.message)
       false
-    end
   end
 
   def posts_form_params
-    params.require(:post_form).permit(:title, :reference_site, :products_used, text)
+    params.require(:posts_form).permit(:title, :reference_site, :products_used, :text)
   end
+
+end

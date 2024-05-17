@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   #投稿機能
   resources :posts, only: [:new, :create, :show, :index, :destroy, :edit, :update]
+  
 
   #ゲストログイン機能
   devise_scope :user do

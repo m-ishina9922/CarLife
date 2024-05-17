@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def new
     @posts_form = PostsForm.new
-  
+
 
   end
 
@@ -53,6 +53,6 @@ class PostsController < ApplicationController
   end
 
   def posts_form_params
-    params.require(:post_form).permit(:title, :reference_site, :products_used, text)
+    params.require(:posts_form).permit(:title, :reference_site, :products_used, text)
   end
 end
