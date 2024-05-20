@@ -1,6 +1,6 @@
-<% @posts.each do |post| %>
+<% @posts_form.each do |post_form| %>
 <div>
-   <p><%= link_to post.title, post_path(post.id) %> - <%= link_to post.user.name, user_path(post.user)  %></p>
+   <p><%= link_to posts_form.title, post_path(post.id) %> - <%= link_to post.user.name, user_path(post.user)  %></p>
 </div>
 <% end %>
 

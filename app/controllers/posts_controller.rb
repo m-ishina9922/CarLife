@@ -1,14 +1,13 @@
 class PostsController < ApplicationController
   def new
-    @posts_form = PostsForm.new
-
+    @post_form = PostsForm.new
 
   end
 
   def create
-    @posts_form = PostsForm.new(posts_form_params)
+    @post_form = PostsForm.new(post_form_params)
 
-    if @posts_form.save
+    if @post_form.save_post
      redirect_to posts_path
     else
      render :new
@@ -16,11 +15,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts_form = PostsForm.all
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post_form = PostForm.find(params[:id])
     #byebug
     @processimage = @post.processimage
   end
@@ -52,7 +51,7 @@ class PostsController < ApplicationController
       processimages_attributes: [:text, :id])
   end
 
-  def posts_form_params
-    params.require(:posts_form).permit(:title, :reference_site, :products_used, text)
+  def post_form_params
+    params.require(:posts_form).permit(:title, :reference_site, :products_used, :text)
   end
 end
