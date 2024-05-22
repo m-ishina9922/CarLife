@@ -28,12 +28,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @process_image = Processimage.find(params[:id])
   end
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post .id)
+    @processimage = Processimage.find(params[:id])
+    @post.update(post_form_params)
+    @processimage.update(post_form_params)
+    redirect_to post_path(@post.id)
   end
 
   def destroy
