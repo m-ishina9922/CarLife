@@ -17,6 +17,9 @@ class PostsForm
   attribute :text, :string
   attribute :post_id, :integer
 
+  #tags
+
+
 
   #バリデーション
   validates :title, presence: true

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def new
     #formオブジェクトのインスタンスを使う
     @post_form = PostsForm.new
+    
 
   end
 

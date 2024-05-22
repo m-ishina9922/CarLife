@@ -1,19 +1,23 @@
 <h1>投稿画面</h1>
 <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
 <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
-  <%= f.label :title, '作業タイトル' %>
-  <%= f.text_field :title %>
 
-  <%= f.label :text, '作業工程' %>
-  <%= f.text_field :text %>
+  <%= f.label :title, '作業タイトル' %><br/>
+    <%= f.text_field :title %><br/>
 
-  <%= f.label :reference_site, '参照サイトURL' %>
-  <%= f.text_field :reference_site %>
+  <%= f.label :reference_site, '参照サイトURL' %><br/>
+    <%= f.text_field :reference_site %><br/>
 
-  <%= f.label :products_used, '使用した商品' %>
-  <%= f.text_field :products_used %>
+  <%= f.label :products_used, '使用した商品' %><br/>
+    <%= f.text_field :products_used %><br/>
 
-  <%= f.submit '投稿する' %>
+  <%= f.label :text, '作業工程' %><br/>
+    <a>1. </a><%= f.text_area :text %><br/>
+    
+    
+  
+
+  <%= f.submit '投稿する' %><br/>
 
  <% end %>
 
