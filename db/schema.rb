@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2024_05_16_011628) do
     t.string "car_introduct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_valid"
+    t.boolean "is_valid", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

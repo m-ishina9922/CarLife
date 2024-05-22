@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
   def new
+    #formオブジェクトのインスタンスを使う
     @post_form = PostsForm.new
 
   end
 
   def create
     @post_form = PostsForm.new(post_form_params)
-
+    @post_form.user_id = current_user.id
     if @post_form.save_post
      redirect_to posts_path
     else
@@ -15,13 +16,14 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts_form = PostsForm.all
+     @posts = Post.all
+
   end
 
   def show
-    @post_form = PostForm.find(params[:id])
-    #byebug
-    @processimage = @post.processimage
+    @post = Post.find(params[:id])
+    @processimage = Processimage.find(params[:id])
+
   end
 
   def edit
@@ -47,11 +49,11 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :reference_site,
       :products_used,
-      :title,
-      processimages_attributes: [:text, :id])
+      :title)
   end
 
   def post_form_params
-    params.require(:posts_form).permit(:title, :reference_site, :products_used, :text)
+    params.require(:posts_form).permit(:user_id, :processimage, :title, :processimage, :reference_site, :products_used, :text)
   end
+
 end

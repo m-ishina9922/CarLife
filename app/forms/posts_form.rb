@@ -5,19 +5,29 @@ class PostsForm
   include ActiveModel::Attributes
   #ActiveRecordのカラムのような属性を加えられるようにする
 
-  attr_accessor :title, :reference_site, :products_used, :text, :name
+  #posts
+  attribute :user_id, :integer
+  attribute :title, :string
+  attribute :processimage, :integer
+  attribute :reference_site, :string
+  attribute :products_used, :string
 
 
+  #processimage
+  attribute :text, :string
+  attribute :post_id, :integer
+
+
+  #バリデーション
   validates :title, presence: true
   validates :text, presence: true
 
 
 
-
+  #レコード保存の処理
   def save_post
-        post = Post.create(title: title, reference_site: reference_site, products_used: products_used)
-        process_image = Processimage.create(text: text)
-
+    post = Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
+    processimage = Processimage.create(user_id: user_id, text: text, post_id: post.id)
   end
 
 end

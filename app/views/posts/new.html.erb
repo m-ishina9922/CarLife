@@ -1,6 +1,5 @@
 <h1>投稿画面</h1>
-
-
+<!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
 <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
   <%= f.label :title, '作業タイトル' %>
   <%= f.text_field :title %>
