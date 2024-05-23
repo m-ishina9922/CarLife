@@ -1,8 +1,8 @@
 class Processimage < ApplicationRecord
   has_one_attached :image
 
-  has_many :post
-  has_many :user
+  belongs_to :post
+  belongs_to :user
 
   validates :text, presence: true
 end

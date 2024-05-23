@@ -1,26 +1,30 @@
 
 <!-- postsのデータを取得 -->
 <%= form_with(model: @post, url: edit_post_path, local: true) do |f| %>
+ 
+
 <h4>Post編集</h4>
-<%= f.submit '投稿' %>
 
-<h4>Title</p>
-<%= f.text_field :title %>
 
-<p>参考にしたサイトURL</p>
-<%= f.text_field :reference_site %>
 
-<p>使用した商品</p>
-<%= f.text_field :products_used %>
+  <a>Title</a></br>
+   <%= f.text_field :title %></br>
+
+
+  <a>参考にしたサイトURL</a></br>
+   <%= f.text_field :reference_site %></br>
+
+
+  <a>使用した商品</a></br>
+   <%= f.text_field :products_used %></br>
+   
+   
+  <a>作業工程</a></br>
+   <%= f.text_area :text %></br>
+   
+   <%= f.submit '投稿' %></br>
+
+
 
 <% end %>
 
-
-
-<!-- processimageのデータを取得 -->
-<%= form_with(model: @process_image, url: edit_post_path, local: true) do |f| %>
-
-<h4>作業工程</h4>
-<%= f.text_field :text %>
-
-<% end %>

@@ -8,12 +8,11 @@ class PostsForm
   #posts
   attribute :user_id, :integer
   attribute :title, :string
-  attribute :processimage, :integer
   attribute :reference_site, :string
   attribute :products_used, :string
 
 
-  #processimage
+  #processimages
   attribute :text, :string
   attribute :post_id, :integer
 

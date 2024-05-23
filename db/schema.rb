@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2024_05_16_011628) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
-    t.integer "processimage"
     t.string "reference_site"
     t.string "products_used"
     t.datetime "created_at", precision: 6, null: false
