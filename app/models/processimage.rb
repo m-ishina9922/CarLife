@@ -4,5 +4,5 @@ class Processimage < ApplicationRecord
   belongs_to :post
   belongs_to :user
 
-  validates :text, presence: true
+  validates :text1, presence: true
 end

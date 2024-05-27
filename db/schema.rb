@@ -93,7 +93,16 @@ ActiveRecord::Schema.define(version: 2024_05_16_011628) do
   create_table "processimages", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
-    t.string "text"
+    t.string "text1"
+    t.string "text2"
+    t.string "text3"
+    t.string "text4"
+    t.string "text5"
+    t.string "text6"
+    t.string "text7"
+    t.string "text8"
+    t.string "text9"
+    t.string "text10"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

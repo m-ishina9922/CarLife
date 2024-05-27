@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -52,7 +52,25 @@ class PostsController < ApplicationController
   end
 
   def post_form_params
-    params.require(:posts_form).permit(:user_id, :processimage_id, :title, :reference_site, :products_used, :text, :post_id)
+    params.require(:posts_form).permit(
+      :user_id,
+      :title,
+      :reference_site,
+      :products_used,
+      :text1,
+      :text2,
+      :text3,
+      :text4,
+      :text5,
+      :text6,
+      :text7,
+      :text8,
+      :text9,
+      :text10,
+      :post_id,
+      :name,
+      :tag_id,
+      )
   end
 
 end
