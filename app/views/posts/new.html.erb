@@ -25,9 +25,8 @@
     <p>作業を追加する　＋</p>
 
 
-<p>タグをつける</p>
-  <%= f.label :name, 'タグをつける' %>
-    <%= f.text_field :name %><br/>
+<p>スペースで区切って複数のタグをつけることができます</p>
+    <%= f.text_area :name, placeholder: "サーキット スタンス" %><br/>
 
   <%= f.submit '投稿する' %><br/>
 

@@ -18,11 +18,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post_tags = Tag.all
 
   end
 
   def show
     @post = Post.find(params[:id])
+    #@postに紐づいたtag取得
+    @post_tags = @post.tags
   end
 
   def edit
@@ -74,3 +77,5 @@ class PostsController < ApplicationController
   end
 
 end
+
+
