@@ -9,7 +9,9 @@ class PostsController < ApplicationController
   def create
     @post_form = PostsForm.new(post_form_params)
     @post_form.user_id = current_user.id
-    if @post_form.save_post
+
+    if @post_form.valid? #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
+     @post_form.save_post
      redirect_to posts_path
     else
      render :new
@@ -18,14 +20,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @post_tags = Tag.all
 
   end
 
   def show
     @post = Post.find(params[:id])
-    #@postに紐づいたtag取得
-    @post_tags = @post.tags
+    #@postに紐づいたpost_tagの取得
+  
   end
 
   def edit

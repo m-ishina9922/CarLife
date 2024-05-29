@@ -41,20 +41,22 @@ class PostsForm
 
 
 
-  #レコード保存の処理
-  def save_post
-    post = Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
-    processimage = Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
+ #保存処理
+ def save_post
+   post =Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
+   Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
+   tag = Tag.create(name: name)
 
-    tag = Tag.create(name: name)
-    #入力されたタグを空白で区切って配列化する
-    tag_list = tag_id.split(/[[:blank:]]+/).select(&:present?)
-    #入力されたタグが新規タグか既存のタグかを判別
-    tag_list.each do |tag_name|
-      @tag = Tag.where(name: tag_name).first_or_initialize
-      @tag. save
-    end
+   #入力されたタグを空白で区切って配列化する
+   tag_list = tag[:name].split(/[[:blank:]]+/).select(&:present?)
 
-    true
-  end
+   tag_list.each do |new_tag|
+     #nemeをfindし、すでに値があれば取得、nilならば作成する
+     post_tag = Tag.find_or_create_by(name: new_tag)
+     tag.save
+   end
+ end
+
 end
+
+

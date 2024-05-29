@@ -1,4 +1,4 @@
 class PostTag < ApplicationRecord
   belongs_to :post
-  has_many :tags
+  belongs_to :tag
 end
