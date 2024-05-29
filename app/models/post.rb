@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  #画像データを保存できるようにする
+  has_many_attached :image
+
   belongs_to :user
   has_many :processimages,  dependent: :destroy
 

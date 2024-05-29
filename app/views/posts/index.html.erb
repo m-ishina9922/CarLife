@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
 <div>
+   <p><%= image_tag post.image.url %></p>
    <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user)  %></p>
 </div>
 <% end %>

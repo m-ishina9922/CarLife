@@ -1,12 +1,13 @@
-
 <h3>作業タイトル☆</h3>
+
+
  <p>
    <%= @post.title %>
  </p>
 
 <h3>作業工程</h3>
  <p>
-   <a>1. </a><%= @post.processimages.first.text1 %><br/>
+   <a>1. </a><%= @post.processimages.first.text1 %> <%= image_tag @post.image %><br/>
    <a>2. </a><%= @post.processimages.first.text2 %><br/>
    <a>3. </a><%= @post.processimages.first.text3 %><br/>
    <a>4. </a><%= @post.processimages.first.text4 %><br/>
@@ -33,3 +34,5 @@
  <%= link_to "編集", edit_post_path(@post.id) %>
 <% else %>
 <% end %>
+
+

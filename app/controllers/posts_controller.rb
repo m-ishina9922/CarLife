@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     #@postに紐づいたpost_tagの取得
-  
+
   end
 
   def edit
@@ -74,6 +74,7 @@ class PostsController < ApplicationController
       :post_id,
       :name,
       :tag_id,
+      :image
       )
   end
 
