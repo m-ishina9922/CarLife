@@ -20,22 +20,15 @@
          <%= f.label :products_used, '使用した商品' %><br/>
            <%= f.text_field :products_used %><br/>
 
-         <%= f.label :text, '作業工程' %><br/>
-           <a>1. </a><%= f.text_area :text1 %><a><%= f.file_field :image %></a><br/>
-           <a>2. </a><%= f.text_area :text2 %><a>写真2</a><br/>
-           <a>3. </a><%= f.text_area :text3 %><a>写真3</a><br/>
-           <a>4. </a><%= f.text_area :text4 %><a>写真4</a><br/>
-           <a>5. </a><%= f.text_area :text5 %><a>写真5</a><br/>
-           <a>6. </a><%= f.text_area :text6 %><a>写真6</a><br/>
-           <a>7. </a><%= f.text_area :text7 %><a>写真7</a><br/>
-           <a>8. </a><%= f.text_area :text8 %><a>写真8</a><br/>
-           <a>9. </a><%= f.text_area :text9 %><a>写真9</a><br/>
-           <a>10. </a><%= f.text_area :text10 %><a>写真10</a><br/>
-           <p>作業を追加する　＋</p>
+
+           <% (1..10).each do |index| %>
+            <%= f.label :"text#{index}", "#{index}." %><br/>
+            <%= f.text_area :"text#{index}" %> <%= f.file_field :"image#{index}" %><br/>
+           <% end %>
 
 
         <p>スペースで区切って複数のタグをつけることができます</p>
-           <%= f.text_area :name, placeholder: "サーキット スタンス" %><br/>
+           <%= f.text_area :name, placeholder: "タグを入力" %><br/>
 
          <%= f.submit '投稿する' %><br/>
 

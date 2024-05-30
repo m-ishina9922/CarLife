@@ -6,7 +6,8 @@ class PostsForm
   #ActiveRecordのカラムのような属性を加えられるようにする
 
   #インスタンス変数を使えるようにする
-  attr_accessor :name, :post_id, :tag_id, :image
+  attr_accessor :name, :post_id, :tag_id, :images
+
 
   #posts
   attribute :user_id, :integer
@@ -27,7 +28,16 @@ class PostsForm
   attribute :text9, :string
   attribute :text10, :string
   attribute :post_id, :integer
-  attribute :image
+  attribute :image1
+  attribute :image2
+  attribute :image3
+  attribute :image4
+  attribute :image5
+  attribute :image6
+  attribute :image7
+  attribute :image8
+  attribute :image9
+  attribute :image10
 
   #tag
   attribute :name
@@ -47,7 +57,7 @@ class PostsForm
    post =Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
    Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
    tag = Tag.create(name: name)
-   post.image.attach(image) if image
+   post.images.attach(params[:images])
    #入力されたタグを空白で区切って配列化する
    tag_list = tag[:name].split(/[[:blank:]]+/).select(&:present?)
 
@@ -58,10 +68,10 @@ class PostsForm
    end
  end
 
+ #Activestorageで画像を複数保存する処理
+
 end
 
-#post.image.attach(image) if imageで画像の保存はできているがActiveStorage::Attached::Manyで保存されているため、urlに変換できない
-#解決案
-#post.image.attach(image) if image の記述方法を変える→urlを付与できる記述方法
-#他の画像保存方法を考える
-#おなかがすいた
+
+
+

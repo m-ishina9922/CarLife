@@ -3,13 +3,12 @@ class PostsController < ApplicationController
     #formオブジェクトのインスタンスを使う
     @post_form = PostsForm.new
 
-
   end
 
   def create
+    # byebug
     @post_form = PostsForm.new(post_form_params)
     @post_form.user_id = current_user.id
-
     if @post_form.valid? #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
      @post_form.save_post
      redirect_to posts_path
@@ -25,7 +24,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    #@postに紐づいたpost_tagの取得
 
   end
 
@@ -52,7 +50,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(
       :reference_site,
       :products_used,
-      :title)
+      :title
+      )
   end
 
   def post_form_params
@@ -74,7 +73,16 @@ class PostsController < ApplicationController
       :post_id,
       :name,
       :tag_id,
-      :image
+      :image1,
+      :image2,
+      :image3,
+      :image4,
+      :image5,
+      :image6,
+      :image7,
+      :image8,
+      :image9,
+      :image10,
       )
   end
 
