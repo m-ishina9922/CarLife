@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    # byebug
     @post_form = PostsForm.new(post_form_params)
     @post_form.user_id = current_user.id
     if @post_form.valid? #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
@@ -73,6 +72,7 @@ class PostsController < ApplicationController
       :post_id,
       :name,
       :tag_id,
+      :images,
       :image1,
       :image2,
       :image3,

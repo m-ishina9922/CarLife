@@ -57,7 +57,10 @@ class PostsForm
    post =Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
    Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
    tag = Tag.create(name: name)
-   post.images.attach(params[:images])
+   post.images.attach(image1, image2, image3, image4, image5, image6, image7, image8, image9, image10)
+   post.save
+
+
    #入力されたタグを空白で区切って配列化する
    tag_list = tag[:name].split(/[[:blank:]]+/).select(&:present?)
 
@@ -65,13 +68,11 @@ class PostsForm
      #nemeをfindし、すでに値があれば取得、nilならば作成する
      post_tag = Tag.find_or_create_by(name: new_tag)
      tag.save
+
    end
  end
 
- #Activestorageで画像を複数保存する処理
-
 end
-
 
 
 

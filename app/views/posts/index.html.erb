@@ -1,14 +1,25 @@
-<% @posts.each do |post| %>
-<div>
-   <% if post.images.attached? %>
-     <%= image_tag post.image1, size: "200x200" %>
-   <% else %>
-     <%= image_tag 'no_image', size: "200x200" %>
-   <% end %>
+<div class="container">
+   <div class="row">
+      <div class="col-xl-4" style="background-color: gray;">
+         <h2>サイドバー</h2>
+      </div><!--サイドパーcol-xl-4-->
+      <div class="col-xl-8">
 
-   <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user)  %></p>
-</div>
-<% end %>
+        <% @posts.each do |post| %>
+        <div>
+           <% if post.images.attached? %>
+             <%= image_tag url_for(post.images[0]), size: "200x200" %>
+           <% else %>
+             <%= image_tag 'no_image', size: "200x200" %>
+           <% end %>
 
+          <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user)  %></p>
+        </div>
+        <% end %>
+       </div><!--メインコンテンツcol-xl-8-->
+
+
+   </div><!--row-->
+</div><!--container-->
 
 
