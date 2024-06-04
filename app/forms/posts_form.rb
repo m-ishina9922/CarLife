@@ -59,6 +59,7 @@ class PostsForm
    tag = Tag.create(name: name)
    post.images.attach(image1, image2, image3, image4, image5, image6, image7, image8, image9, image10)
    post.save
+   
 
 
    #入力されたタグを空白で区切って配列化する

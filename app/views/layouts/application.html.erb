@@ -14,54 +14,63 @@
 
   <body class="d-flex flex-column vh-100">
     <header>
-      <nav class="navbar navbar-expand-lg p-1 navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-xl p-1 " style="background-color: white;">
       <div class="container">
-        <div class="p-3 text-white "><a class="navbar-brand" href="/">CarLife.</a></div>
+        <div class="p-3 text-white "><a class="navbar-brand text-black-50" href="/">CarLife.</a></div>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon" style="color: white;"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
+
+
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto">
 
              <% if user_signed_in? %>
 
+             <!--homeリンク-->
              <li class="nav-item">
-               <%= link_to posts_path do %>
-               <i class="fa-solid fa-house"></i>
+               <%= link_to posts_path do  %>
+               <i class="fa-solid fa-house nav-link text-dark"></i>
                <% end %>
              </li>
 
-             <li class="nav-item">
+             <!--サインアウトリンク-->
+             <li class="nav-item" >
                <%= link_to destroy_user_session_path, method: :delete do %>
-               <i class="fa-solid fa-right-from-bracket"></i>
+                <i class="fa-solid fa-right-from-bracket nav-link text-dark"></i>
                <% end %>
              </li>
 
+             <!--ユーザーアイコンリンク-->
              <li class="nav-item">
-              <%= link_to image_tag(current_user.get_profile_image), user_path(current_user.id) %>
+              <%= link_to image_tag(current_user.get_profile_image,  class: "rounded-circle img-fluid", size: "50x50"), user_path(current_user.id), class: 'nav-link text-dark' %>
              </li>
 
-              <li class="nav-item">
-              <%= link_to "投稿する", new_post_path %>
+             <!--投稿リンク-->
+             <li class="nav-item">
+              <%= link_to "投稿する", new_post_path, class: 'nav-link text-dark' %>
              </li>
 
              <% else %>
 
+             <!--aboutリンク-->
              <li class="nav-item">
                <%= link_to about_path do %>
-                <i class="fa-solid fa-link"></i>
-                <% end %>
+                <i class="fa-solid fa-link nav-link text-dark"></i>
+               <% end %>
              </li>
 
+             <!--新規登録リンク-->
              <li class="nav-item">
-               <%= link_to "新規登録", new_user_registration_path %>
+               <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark"%>
              </li>
 
+             <!--ログインリンク-->
              <li class="nav-item">
                <%= link_to new_user_session_path do %>
-               <i class="fa-solid fa-right-to-bracket"></i>
+                <i class="fa-solid fa-right-to-bracket nav-link text-dark"></i>
                <% end %>
              </li>
 
