@@ -22,7 +22,7 @@
 
 
            <% (1..10).each do |index| %>
-            <%= f.label :"text#{index}", "#{index}." %><br/>
+            <%= f.label :"text#{index}", "#{index}." %>
             <%= f.text_area :"text#{index}" %> <%= f.file_field :"image#{index}" %><br/>
            <% end %>
 

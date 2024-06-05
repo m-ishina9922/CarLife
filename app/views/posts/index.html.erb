@@ -7,8 +7,8 @@
 
         <% @posts.each do |post| %>
         <div>
-           <% if post.images.attached? %>
-             <%= image_tag url_for(post.images[0]), size: "200x200" %>
+           <% if post.image1.attached? %>
+             <%= image_tag url_for(post.image1), size: "200x200" %>
            <% else %>
              <%= image_tag 'no_image', size: "200x200" %>
            <% end %>
