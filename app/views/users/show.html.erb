@@ -1,9 +1,10 @@
 <h1>User Profile</h1>
-<div></div>
+<div>
   <p><%= @user.name %>
    <%= image_tag @user.get_profile_image , class: "rounded-circle img-fluid", size: "120x120" %></p>
    <h4>Introduct</h4>
   <p><%= @user.introduct %><p>
+</div>
 
   <h4>Mycar Introduct</h4>
   <p><%= @user.car_introduct %></p>
