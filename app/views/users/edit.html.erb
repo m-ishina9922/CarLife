@@ -2,9 +2,8 @@
 
 <%= form_with model: @user do |f| %>
 
-<h4>プロフィールアイコン</h4>
 <label for="inputName">Name</label>
-<p><%= f.text_field :name, autofocus: true, id: "InputName", placeholder: "ユーザー名" %></p>
+ <p><%= f.text_field :name, autofocus: true, id: "InputName", placeholder: "ユーザー名" %></p>
 
 <label for="inputImage">Icon</label>
 <p><%= f.file_field :profile_image, placeholder: "ユーザーアイコン", accept: "image/*" %></p>
@@ -14,6 +13,22 @@
 
 <label for="inputIntroduct">CarIntroduct</label>
 <p><%= f.text_field :car_introduct, autofocus: true, id: "InputIntroduct", placeholder: "Introduct" %></p>
+
+<lanel for="inputCarimage">My Car Photo</label>
+  <p><%= f.file_field :car_images, placeholder: "My Car Photo", multiple: true %></p>
+
+
+<div>
+  <p>削除するものにチェックを付けてください</p>
+  <% if @user.car_images.attached? %>
+   <% @user.car_images.each do |car_image| %>
+    <!--チェックボックスを表示-->
+    <%= f.check_box :car_image_ids, {multiple: true}, car_image.id, false %>
+    <%= image_tag car_image, size: "200x200" %>
+   <% end %>
+  <% end %>
+</div>
+
 
 
 

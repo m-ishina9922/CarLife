@@ -12,6 +12,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if params[:user][:car_image_ids]
+      params[:user][:car_image_ids].each do |car_image_id|
+        image = @user.car_images.find(car_image_id)
+        image.purge #car_image_idを取得してcheckを付けたものを削除
+      end
+    end
     @user.update(user_params)
     redirect_to user_path
   end
@@ -29,6 +35,8 @@ class UsersController < ApplicationController
   end
 
   private
+
+
   def is_matching_login_user
     user = User.find(params[:id])
     unless user.id == current_user.id
@@ -37,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :introduct, :car_introduct, :car_images)
+    params.require(:user).permit(:name, :profile_image, :introduct, :car_introduct, car_images: [])
   end
 
 end

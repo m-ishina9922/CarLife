@@ -10,6 +10,11 @@
   <p><%= @user.car_introduct %></p>
 
   <h4>Mycar Photo</h4>
+  <div>
+  　<% @user.car_images.each do |car_image| %>
+     <%= image_tag car_image, size: "200x200" %>
+    <% end %>
+  </div>
 
 </div>
 
