@@ -1,7 +1,7 @@
 <h1>User Profile</h1>
 <div>
   <p><%= @user.name %>
-   <%= image_tag @user.get_profile_image , size: "200x200" %></p>
+   <%= image_tag @user.get_profile_image, resize_to_fit: [200, 200] %></p>
    <h4>Introduct</h4>
   <p><%= @user.introduct %><p>
 </div>
@@ -13,7 +13,7 @@
   <div>
     <% if @user.car_images.attached? %>
     　<% @user.car_images.each do |car_image| %>
-       <%= image_tag car_image, size: "200x200" %>
+       <%= image_tag car_image.variant(resize_to_fit: [200, 200]) %>
       <% end %>
     <% else %>
       <%= image_tag "no_image", size: "200x200" %>

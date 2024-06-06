@@ -18,12 +18,15 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    user_id = current_user.id
+    @user = User.find(user_id)
 
   end
 
   def show
     @post = Post.find(params[:id])
-
+    user_id = current_user.id
+    @user = User.find(user_id)
   end
 
   def edit

@@ -1,13 +1,21 @@
 <div class="container">
    <div class="row">
+
       <div class="col-xl-2" style="background-color: gray;">
+        <div>
+          <p><%= @user.name %>
+           <%= link_to image_tag(@user.get_profile_image, resize_to_fit: [200, 200]), user_path(@user.id) %></p>
+          <h4>Introduct</h4>
+          <p><%= @user.introduct %><p>
+        </div>
       </div><!--サイドパーcol-xl-4-->
+
       <div class="col-xl-10">
 
         <% @posts.each do |post| %>
         <div>
            <% if post.image1.attached? %>
-             <%= image_tag url_for(post.image1), size: "200x200" %>
+             <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %>
            <% else %>
              <%= image_tag 'no_image', size: "200x200" %>
            <% end %>
