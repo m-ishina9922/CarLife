@@ -19,9 +19,10 @@
 
 
 <div>
-  <p>削除するものにチェックを付けてください</p>
+
   <% if @user.car_images.attached? %>
    <% @user.car_images.each do |car_image| %>
+    <p>削除するものにチェックを付けてください</p>
     <!--チェックボックスを表示-->
     <%= f.check_box :car_image_ids, {multiple: true}, car_image.id, false %>
     <%= image_tag car_image, size: "200x200" %>
