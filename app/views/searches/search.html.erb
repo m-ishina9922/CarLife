@@ -4,14 +4,19 @@
    <h3>User Search for <%= @word %></h3>
     <% @users.each do |user| %>
      <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
-     <p><%= user.name %>
+     <p><%= link_to user.name, user_path(user.id) %>
     <% end %>
 
    <% else %><!--そうでない場合はpostの検索結果を表示-->
     <h3>Post Search for <%= @word %></h3>
      <% @posts.each do |post| %>
-      <p><%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %></p>
-      <p><%= post.title %></p>
+      <p>
+       <% if post.image1.attached? %>
+        <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %></p>
+       <% else %>
+        <%= image_tag "no_image", size: "200x200" %>
+       <% end %>
+      <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user) %></p>
      <% end %>
    <% end %>
 </div>
