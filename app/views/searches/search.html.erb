@@ -1,0 +1,17 @@
+<div class="search_result">
+  <!--取得したモデルがUserだった場合はuserの検索結果を表示-->
+  <% if @model == "User" %>
+   <h3>User Search for <%= @word %></h3>
+    <% @users.each do |user| %>
+     <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
+     <p><%= user.name %>
+    <% end %>
+
+   <% else %><!--そうでない場合はpostの検索結果を表示-->
+    <h3>Post Search for <%= @word %></h3>
+     <% @posts.each do |post| %>
+      <p><%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %></p>
+      <p><%= post.title %></p>
+     <% end %>
+   <% end %>
+</div>

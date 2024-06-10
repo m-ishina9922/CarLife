@@ -40,7 +40,10 @@ Rails.application.routes.draw do
   #退会機能
   get '/user/check' => 'users#check'
   patch '/user/withdraw' => 'users#withdraw'
-  
+
+
+  #検索機能
+  get "search" => "searches#search"
 
 
   get 'homes/top'

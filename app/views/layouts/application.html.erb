@@ -27,8 +27,12 @@
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
            <ul class="navbar-nav ml-auto">
 
+
+
              <% if user_signed_in? %>
 
+             <!--検索窓-->
+             <%= render 'searches/search' %>
              <!--homeリンク-->
              <li class="nav-item">
                <%= link_to posts_path do  %>
