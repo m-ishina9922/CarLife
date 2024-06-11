@@ -25,34 +25,32 @@
 
 
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-           <ul class="navbar-nav ml-auto">
+           <ul class="navbar-nav ml-auto d-flex align-items-center">
 
 
 
              <% if user_signed_in? %>
 
              <!--検索窓-->
+             <div>
               <%= render 'searches/search' %>
-
+             </div>
              <!--homeリンク-->
-             <li class="nav-item">
+             <li class="nav-item ">
                <%= link_to posts_path do  %>
                <i class="fa-solid fa-house nav-link text-dark"></i>
                <% end %>
              </li>
-
              <!--サインアウトリンク-->
              <li class="nav-item" >
                <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa-solid fa-right-from-bracket nav-link text-dark"></i>
                <% end %>
              </li>
-
              <!--ユーザーアイコンリンク-->
              <li class="nav-item">
               <%= link_to image_tag(current_user.get_profile_image,  class: "rounded-circle img-fluid", size: "50x50"), user_path(current_user.id), class: 'nav-link text-dark' %>
              </li>
-
              <!--投稿リンク-->
              <li class="nav-item">
               <%= link_to "投稿する", new_post_path, class: 'nav-link text-dark' %>
@@ -66,12 +64,10 @@
                 <i class="fa-solid fa-link nav-link text-dark"></i>
                <% end %>
              </li>
-
              <!--新規登録リンク-->
              <li class="nav-item">
                <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark"%>
              </li>
-
              <!--ログインリンク-->
              <li class="nav-item">
                <%= link_to new_user_session_path do %>

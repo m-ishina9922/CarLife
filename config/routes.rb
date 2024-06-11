@@ -51,3 +51,8 @@ Rails.application.routes.draw do
   get 'homes/about', to: 'homes#about', as: :about
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+
+
+#6/11メモ
+#愛車プロフィール画像の更新、削除する画像にチェックを付けていないのに編集して保存をすると消えてしまう。
