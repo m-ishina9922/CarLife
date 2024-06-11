@@ -14,7 +14,7 @@
 
   <body class="d-flex flex-column vh-100">
     <header>
-      <nav class="navbar navbar-expand-xl p-1 " style="background-color: white;">
+      <nav class="navbar navbar-expand-xl p-1 bg-light" >
       <div class="container">
         <div class="p-3 text-white "><a class="navbar-brand text-black-50" href="/">CarLife.</a></div>
 
@@ -86,6 +86,24 @@
       </div>
       </nav>
     </header>
-    <%= yield %>
+
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-light">
+      <div class="container">
+       <div class="row no-gutters">
+        <div class="col-md-4">
+         <p>車好きを繋げるSNS</p>
+         <a class="navbar-brand text-black-50" href="/">CarLife.</a>
+        </div><!--col-md-4-->
+       </div><!--row no-gutters-->
+      </div><!--container-->
+    </footer>
   </body>
 </html>
+
+
+
+<!--  style="background-color: white;" ←navbar白くしたい時-->

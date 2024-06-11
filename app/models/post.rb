@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :processimages,  dependent: :destroy
 
+  #tag関連のアソシエーション
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
@@ -34,7 +35,7 @@ class Post < ApplicationRecord
       @post = Post.where("title LIKE?", "%#{word}%")
     else
       @post = Post.all
-    end 
-    
+    end
+
    end
 end
