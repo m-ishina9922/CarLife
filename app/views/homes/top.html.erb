@@ -1,7 +1,15 @@
-<h1>めっちゃかっこいいキャッチコピー</h1>
+<div class="container-breakpoint">
+  <div class="row">
+    <div class="col-md-12 mt-5 ">
+      <h1 class="catch-copy" style="background-image: url(images/mv.jpg);">めっちゃかっこいいキャッチコピー</h1>
 
-<div class="btn">
+      <div class="btn mx-auto p-2 ">
 
-  <%= link_to "はじめてみる？", new_user_registration_path %><br>
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-</div>
+       <a><%= link_to "はじめてみる？", new_user_registration_path %></a><br>
+       <a><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></a>
+      </div>
+
+   </div><!--col-md-12-->
+  </div><!--row-->
+</div><!--container-->
+
