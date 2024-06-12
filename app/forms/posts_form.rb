@@ -76,15 +76,16 @@ class PostsForm
 
    tag_list.each do |new_tag|
      #nemeをfindし、すでに値があれば取得、nilならば作成する
-     post_tag = Tag.find_or_create_by(name: new_tag)
-     post_tag.save
+     tag = Tag.find_or_create_by(name: new_tag)
+     tag.save
 
-     post.tags << tag
+     #新規tagのみpostに関連付ける
+     post.tags << tag unless post.tags.include?(tag)
 
    end
  end
 
 end
 
-#検索機能作成準備
+
 
