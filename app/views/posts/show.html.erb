@@ -15,6 +15,13 @@
         <h3>作業タイトル☆</h3>
          <p><%= @post.title %></p>
 
+         <p>付けられたタグ</p>
+         <p>
+          <% @post.tags.each do |tag| %>
+           <%= tag.name %>
+          <% end %>
+         </p>
+
         <h3>作業工程</h3>
 
          <p>
@@ -115,6 +122,10 @@
          <p>
            <%= @post.products_used %>
          </p>
+
+         <% @post.tags.each do |tag| %>
+          <%= tag.name %>
+         <% end %>
 
         <% if current_user.id == @post.user.id %>
          <%= link_to "削除", post_path(@post.id), method: :delete %> -

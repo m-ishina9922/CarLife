@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def create
     @post_form = PostsForm.new(post_form_params)
+    
     @post_form.user_id = current_user.id
     if @post_form.valid? #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
      @post_form.save_post
@@ -27,10 +28,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     user_id = current_user.id
     @user = User.find(user_id)
+    @tags = @post.tags.pluck(:name).join(',')
   end
 
   def edit
     @post = Post.find(params[:id])
+    @tags = @post.tags.pluck(:name).join(',')
   end
 
   def update

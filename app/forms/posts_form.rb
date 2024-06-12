@@ -6,7 +6,7 @@ class PostsForm
   #ActiveRecordのカラムのような属性を加えられるようにする
 
   #インスタンス変数を使えるようにする
-  attr_accessor :name, :post_id, :tag_id, :image
+  attr_accessor :name, :user_id, :post_id, :tag_id, :image
 
 
   #posts
@@ -57,7 +57,7 @@ class PostsForm
    post =Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
    Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
    tag = Tag.create(name: name)
-   
+
    #投稿画像の
    post.image1.attach(image1)
    post.image2.attach(image2)
@@ -77,7 +77,9 @@ class PostsForm
    tag_list.each do |new_tag|
      #nemeをfindし、すでに値があれば取得、nilならば作成する
      post_tag = Tag.find_or_create_by(name: new_tag)
-     tag.save
+     post_tag.save
+
+     post.tags << tag
 
    end
  end

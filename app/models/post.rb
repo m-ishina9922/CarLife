@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   has_many :processimages,  dependent: :destroy
 
   #tag関連のアソシエーション
-  has_many :post_tags, dependent: :destroy
+  has_many :post_tags, dependent: :destroy #中間テーブル
   has_many :tags, through: :post_tags
 
   validates :title, presence: true
