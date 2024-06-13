@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     user_id = current_user.id
     @user = User.find(user_id)
-    @tag_list = Tag.all
+    @tags = Tag.all
 
   end
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     user_id = current_user.id
     @user = User.find(user_id)
     @post_tags = @post.tags
-    byebug
+
   end
 
   def edit
@@ -50,21 +50,6 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-
-  def save_tag(sent_tags)
-    current_tags = self.tags.pluck(:name) unless self.tags.nil?
-    old_tags = current_tags - sent_tags
-    new_tags = sent_tags - current_tags
-
-    old_tags.each do |old|
-      self.post_tags.delete PostTag.find_by(name: old)
-    end
-
-    new_tags.each do |new|
-      new_post_tag = PostTag.find_or_create_by(name: new)
-      self.post_tags << new_post_tag
-    end
-  end
 
   private
 

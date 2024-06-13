@@ -8,6 +8,15 @@
           <h4>Introduct</h4>
           <p><%= @user.introduct %><p>
         </div>
+
+        <div class="tag-search">
+          <p>タグで検索</p>
+          <p>
+            <% @tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </p>
+        </div>
       </div><!--サイドパーcol-xl-4-->
 
       <div class="col-xl-10">

@@ -45,14 +45,13 @@ Rails.application.routes.draw do
   #検索機能
   get "search" => "searches#search"
 
+  #タグ検索結果を表示する
+  #resources :tags do
+   # get 'posts', 'posts#search'
+
 
   get 'homes/top'
   root to: 'homes#top'
   get 'homes/about', to: 'homes#about', as: :about
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
-
-
-
-#6/11メモ
-#愛車プロフィール画像の更新、削除する画像にチェックを付けていないのに編集して保存をすると消えてしまう。
