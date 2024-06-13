@@ -12,17 +12,17 @@
 
       <div class="col-xl-10">
 
-        <h3>作業タイトル☆</h3>
-         <p><%= @post.title %></p>
+        <h4>作業タイトル☆</h4>
+        <p><%= @post.title %></p>
 
-         <p>付けられたタグ</p>
+         <h4>付けられたタグ</h4>
          <p>
           <% @post.tags.each do |tag| %>
-          <%= tag.name %>
+          #<%= tag.name %>
           <% end %>
          </p>
 
-        <h3>作業工程</h3>
+        <h4>作業工程</h4>
 
          <p>
            <a>1. <%= @post.processimages.first.text1 %></a>
@@ -113,19 +113,15 @@
          </p>
 
 
-        <h3>参考にしたサイトURL</h3>
+        <h4>参考にしたサイトURL</h4>
          <p>
            <%= @post.reference_site %>
          </p>
 
-        <h3>使用した商品</h3>
+        <h4>使用した商品</h4>
          <p>
            <%= @post.products_used %>
          </p>
-
-         <% @post.tags.each do |tag| %>
-          <%= tag.name %>
-         <% end %>
 
         <% if current_user.id == @post.user.id %>
          <%= link_to "削除", post_path(@post.id), method: :delete %> -

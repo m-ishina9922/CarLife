@@ -7,7 +7,8 @@
      <p><%= link_to user.name, user_path(user.id) %>
     <% end %>
 
-   <% else %><!--そうでない場合はpostの検索結果を表示-->
+   <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
+   <% elsif @model == "Post" %>
     <h3>Post Search for <%= @word %></h3>
      <% @posts.each do |post| %>
       <p>
@@ -18,5 +19,9 @@
        <% end %>
       <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user) %></p>
      <% end %>
+
+     <!--それ以外の場合は検索結果がありません-->
+    <% else %>
+     <p>見つかりませんでした。</p>
    <% end %>
 </div>

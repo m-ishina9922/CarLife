@@ -40,17 +40,7 @@ class User < ApplicationRecord
  #検索方法の条件分岐
  #LIKEによるあいまい検索の構文を使用
    def self.looks(search, word)
-     if search == "perfect_match" #検索方法が完全一致だった場合
-      @user = User.where("name LIKE?", "#{word}")
-    elsif search == "forward_match" #検索方法が前方一致だった場合
-      @user = User.where("name LIKE?", "#{word}%")
-    elsif search == "backward_match" #検索方法が後方一致だった場合
-      @user = User.where("name LIKE?", "%#{word}")
-    elsif search == "partial_match" #検索方法が部分一致だった場合
       @user = User.where("name LIKE?", "%#{word}%")
-    else
-      @user = User.all
-    end
    end
 
 

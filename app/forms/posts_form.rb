@@ -56,7 +56,19 @@ class PostsForm
  def save_post
    post =Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
    Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
-   tag = Tag.create(name: name)
+
+    #入力されたタグを空白で区切って配列化する
+   tag_list = name.split(/[[:blank:]]+/).select(&:present?)
+
+   tag_list.each do |new_tag|
+     #nemeをfindし、すでに値があれば取得、nilならば作成する
+     tag = Tag.find_or_create_by(name: new_tag)
+     #新規tagのみpostに関連付ける
+     post.tags << tag
+     tag.save
+   end
+   
+
 
    #投稿画像の
    post.image1.attach(image1)
@@ -70,19 +82,6 @@ class PostsForm
    post.image9.attach(image9)
    post.image10.attach(image10)
 
-
-   #入力されたタグを空白で区切って配列化する
-   tag_list = tag[:name].split(/[[:blank:]]+/).select(&:present?)
-
-   tag_list.each do |new_tag|
-     #nemeをfindし、すでに値があれば取得、nilならば作成する
-     tag = Tag.find_or_create_by(name: new_tag)
-     tag.save
-
-     #新規tagのみpostに関連付ける
-     post.tags << tag unless post.tags.include?(tag)
-
-   end
  end
 
 end
