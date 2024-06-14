@@ -1,0 +1,28 @@
+<div class="container">
+   <div class="row">
+     <div class="col-xl-2" style="background-color: gray;">
+      <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
+     </div><!--サイドパーcol-xl-2-->
+
+      <div class="col-xl-10">
+
+       <!--タグ検索結果を表示-->
+       <div class="search_tag_result">
+        <h4>Tag Search for <%= @tags.name %></h4>
+         <% @posts.each do |post| %>
+          <div>
+          <% if post.image1.attached? %>
+            <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+
+           <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user)  %></p>
+          </div>
+　       <% end %>
+        </div>
+        </div><!--メインコンテンツcol-xl-10-->
+
+
+   </div><!--row-->
+</div><!--container-->

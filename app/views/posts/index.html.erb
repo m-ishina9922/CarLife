@@ -1,22 +1,8 @@
 <div class="container">
    <div class="row">
-
       <div class="col-xl-2" style="background-color: gray;">
-        <div>
-          <p><%= @user.name %>
-           <%= link_to image_tag(@user.get_profile_image, resize_to_fit: [200, 200]), user_path(@user.id) %></p>
-          <h4>Introduct</h4>
-          <p><%= @user.introduct %><p>
-        </div>
+        <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
 
-        <div class="tag-search">
-          <p>タグで検索</p>
-          <p>
-            <% @tags.each do |tag| %>
-              <%= tag.name %>
-            <% end %>
-          </p>
-        </div>
       </div><!--サイドパーcol-xl-4-->
 
       <div class="col-xl-10">
@@ -32,7 +18,7 @@
           <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user)  %></p>
         </div>
         <% end %>
-       </div><!--メインコンテンツcol-xl-8-->
+       </div><!--メインコンテンツcol-xl-10-->
 
 
    </div><!--row-->

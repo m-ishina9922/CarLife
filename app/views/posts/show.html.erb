@@ -2,13 +2,8 @@
    <div class="row">
 
       <div class="col-xl-2" style="background-color: gray;">
-        <div>
-          <p><%= @user.name %>
-           <%= link_to image_tag(@user.get_profile_image, resize_and_pad: [100, 100]), user_path(@user.id) %></p>
-          <h4>Introduct</h4>
-          <p><%= @user.introduct %><p>
-        </div>
-      </div><!--サイドパーcol-xl-4-->
+        <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
+      </div><!--サイドパーcol-xl-2-->
 
       <div class="col-xl-10">
 
@@ -18,7 +13,7 @@
          <h4>付けられたタグ</h4>
          <p>
           <% @post.tags.each do |tag| %>
-          #<%= tag.name %>
+          <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
           <% end %>
          </p>
 

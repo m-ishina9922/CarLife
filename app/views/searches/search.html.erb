@@ -3,9 +3,10 @@
   <% if @model == "User" %>
    <h3>User Search for <%= @word %></h3>
     <% @users.each do |user| %>
-     <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
-     <p><%= link_to user.name, user_path(user.id) %>
+      <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
+      <p><%= link_to user.name, user_path(user.id) %>
     <% end %>
+
 
    <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
    <% elsif @model == "Post" %>

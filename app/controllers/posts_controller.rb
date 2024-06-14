@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   def new
     #formオブジェクトのインスタンスを使う
     @post_form = PostsForm.new
+    @tags = Tag.all           #サイドバータグ表示用
+    user_id = current_user.id #サイドバーのユーザー表示用
+    @user = User.find(user_id)
+
 
   end
 
@@ -29,6 +33,7 @@ class PostsController < ApplicationController
     user_id = current_user.id
     @user = User.find(user_id)
     @post_tags = @post.tags
+    @tags = Tag.all           #サイドバータグ表示用
 
   end
 
@@ -49,6 +54,15 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
+  def search_tag
+    @tags = Tag.find(params[:tag_id])#検索されたタグを受け取り代入
+    @posts = @tags.posts.all          #検索されたタグに紐づくpostを表示
+    user_id = current_user.id        #サイドバーのユーザー表示用
+    @user = User.find(user_id)
+    @tags = Tag.all           #サイドバータグ表示用
+  end
+
 
 
   private

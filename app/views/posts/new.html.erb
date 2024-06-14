@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 mt-3">
+    <div class="col-xl-2" style="background-color: gray;">
+      <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
+    </div><!--サイドパーcol-xl-4-->
+
+    <div class="col-xl-10 mt-3">
        <h1>投稿画面</h1>
        <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
        <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
@@ -29,7 +33,7 @@
         <% end %>
 
 
-     </div><!--col-md-12-->
+     </div><!--col-md-10-->
    </div><!--row-->
  </div><!--container-->
 

@@ -45,9 +45,8 @@ Rails.application.routes.draw do
   #検索機能
   get "search" => "searches#search"
 
-  #タグ検索結果を表示する
-  #resources :tags do
-   # get 'posts', 'posts#search'
+  #タグ検索
+  get "search_tag" => "posts#search_tag"
 
 
   get 'homes/top'
