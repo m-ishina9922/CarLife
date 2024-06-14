@@ -1,28 +1,39 @@
-<div class="search_result">
-  <!--取得したモデルがUserだった場合はuserの検索結果を表示-->
-  <% if @model == "User" %>
-   <h3>User Search for <%= @word %></h3>
-    <% @users.each do |user| %>
-      <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
-      <p><%= link_to user.name, user_path(user.id) %>
-    <% end %>
+<div class="container">
+   <div class="row">
+     <div class="col-xl-2" style="background-color: gray;">
+      <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
+     </div><!--サイドパーcol-xl-2-->
+
+      <div class="col-xl-10">
+       <div class="search_result">
+         <!--取得したモデルがUserだった場合はuserの検索結果を表示-->
+         <% if @model == "User" %>
+          <h3>User Search for <%= @word %></h3>
+           <% @users.each do |user| %>
+             <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
+             <p><%= link_to user.name, user_path(user.id) %>
+           <% end %>
 
 
-   <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
-   <% elsif @model == "Post" %>
-    <h3>Post Search for <%= @word %></h3>
-     <% @posts.each do |post| %>
-      <p>
-       <% if post.image1.attached? %>
-        <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %></p>
-       <% else %>
-        <%= image_tag "no_image", size: "200x200" %>
-       <% end %>
-      <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user) %></p>
-     <% end %>
+          <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
+          <% elsif @model == "Post" %>
+           <h3>Post Search for <%= @word %></h3>
+            <% @posts.each do |post| %>
+             <p>
+              <% if post.image1.attached? %>
+               <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %></p>
+              <% else %>
+               <%= image_tag "no_image", size: "200x200" %>
+              <% end %>
+             <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user) %></p>
+             <% end %>
 
-     <!--それ以外の場合は検索結果がありません-->
-    <% else %>
-     <p>見つかりませんでした。</p>
-   <% end %>
-</div>
+            <!--それ以外の場合は検索結果がありません-->
+           <% else %>
+            <p>見つかりませんでした。</p>
+          <% end %>
+       </div><!--search_result-->
+      </div><!--col-xl-10-->
+   </div><!--row-->
+</div><!--container-->
+

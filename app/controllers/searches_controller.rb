@@ -2,7 +2,10 @@ class SearchesController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    #byebug
+    @tags = Tag.all           #サイドバータグ表示用
+    user_id = current_user.id #サイドバーのユーザー表示用
+    @user = User.find(user_id)
+
     @model = params[:model]    #検索されたモデルを取得して代入
     @word = params[:word]      #検索された単語を取得して代入
     @search = params[:seearch] #検索方法を取得して代入
