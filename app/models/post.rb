@@ -13,11 +13,13 @@ class Post < ApplicationRecord
 
 
   belongs_to :user
-  has_many :processimages,  dependent: :destroy
+  has_many :processimages, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   #tag関連のアソシエーション
   has_many :post_tags, dependent: :destroy #中間テーブル
-  has_many :tags, through: :post_tags
+  has_many :tags, dependent: :destroy, through: :post_tags
 
   validates :title, presence: true
 
@@ -28,4 +30,10 @@ class Post < ApplicationRecord
    def self.looks(search, word)
       @post = Post.where("title LIKE?", "%#{word}%")
    end
+
+   #渡されたユーザーidがfavoriteテーブル内に存在するかを調べるメソッド（存在すればtrue,存在しなければfalse)
+   def favorited_by?(user)
+     favorites.exists?(user_id: user.id)
+   end
+
 end

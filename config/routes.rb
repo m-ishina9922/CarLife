@@ -25,8 +25,10 @@ Rails.application.routes.draw do
 
 
   #投稿機能
-  resources :posts, only: [:new, :create, :show, :index, :destroy, :edit, :update]
-
+  resources :posts, only: [:new, :create, :show, :index, :destroy, :edit, :update] do
+    resources :post_comments, only: [:create]
+    resources :favorites, only: [:create, :destroy]
+  end
   post 'posts/new' => 'posts#create'
 
 

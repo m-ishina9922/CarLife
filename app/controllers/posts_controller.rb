@@ -33,13 +33,18 @@ class PostsController < ApplicationController
     user_id = current_user.id
     @user = User.find(user_id)
     @post_tags = @post.tags
+    @post_comment = PostComment.new
     @tags = Tag.all           #サイドバータグ表示用
 
   end
 
   def edit
     @post = Post.find(params[:id])
-    @tags = @post.tags.pluck(:name).join(',')
+    @processimage = Processimage.find(@post.id)
+    #@tags = @post.tags.pluck(:name).join(',')
+    @tags = Tag.all           #サイドバータグ表示用
+    user_id = current_user.id #サイドバーのユーザー表示用
+    @user = User.find(user_id)
   end
 
   def update

@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts, dependent: :destroy
   has_many :processimages, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   #プロフィール画像
   has_one_attached :profile_image
