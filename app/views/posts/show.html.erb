@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-breakpoint">
    <div class="row">
 
       <div class="col-xl-2" style="background-color: gray;">
@@ -19,91 +19,91 @@
 
         <h4>作業工程</h4>
 
-         <p>
-           <a>1. <%= @post.processimages.first.text1 %></a>
+         <p>1.
              <% if @post.image1.attached? %>
-              <%= image_tag @post.image1, size: "200x200" %>
+              <%= image_tag @post.image1.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text1 %></a>
          </p>
 
          <p>
            <% if @post.processimages.first.text2.present? %>
-            <a>2. <%= @post.processimages.first.text2 %></a>
-             <% if @post.image2.attached? %>
-              <%= image_tag @post.image2, size: "200x200" %>
+             2.<% if @post.image2.attached? %>
+              <%= image_tag @post.image2.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+              <a><%= @post.processimages.first.text2 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text3.present? %>
-           <a>3. <%= @post.processimages.first.text3 %></a>
-             <% if @post.image3.attached? %>
-              <%= image_tag @post.image3, size: "200x200" %>
+             3.<% if @post.image3.attached? %>
+              <%= image_tag @post.image3.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text3 %></a>
            <% end %>
           </p>
 
           <p>
            <% if @post.processimages.first.text4.present? %>
-           <a>4. <%= @post.processimages.first.text4 %></a>
-             <% if @post.image4.attached? %>
-              <%= image_tag @post.image4, size: "200x200" %>
+             4.<% if @post.image4.attached? %>
+              <%= image_tag @post.image4.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text4 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text5.present? %>
-           <a>5. <%= @post.processimages.first.text5 %></a>
-             <% if @post.image5.attached? %>
-              <%= image_tag @post.image5, size: "200x200" %>
+             5.<% if @post.image5.attached? %>
+              <%= image_tag @post.image5.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text5 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text6.present? %>
-           <a>6. <%= @post.processimages.first.text6 %></a>
-             <% if @post.image6.attached? %>
-              <%= image_tag @post.image6, size: "200x200" %>
+             6.<% if @post.image6.attached? %>
+              <%= image_tag @post.image6.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text6 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text7.present? %>
-           <a>7. <%= @post.processimages.first.text7 %></a>
-             <% if @post.image7.attached? %>
-              <%= image_tag @post.image7, size: "200x200" %>
+             7.<% if @post.image7.attached? %>
+              <%= image_tag @post.image7.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text7 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text8.present? %>
-           <a>8. <%= @post.processimages.first.text8 %></a>
-             <% if @post.image8.attached? %>
-              <%= image_tag @post.image8, size: "200x200" %>
+             8.<% if @post.image8.attached? %>
+              <%= image_tag @post.image8.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text8 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text9.present? %>
-           <a>9. <%= @post.processimages.first.text9 %></a>
-             <% if @post.image9.attached? %>
-              <%= image_tag @post.image9, size: "200x200" %>
+             9.<% if @post.image9.attached? %>
+              <%= image_tag @post.image9.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text9 %></a>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text10.present? %>
-           <a>10. <%= @post.processimages.first.text10 %></a>
-             <% if @post.image10.attached? %>
-              <%= image_tag @post.image10, size: "200x200" %>
+             10.<% if @post.image10.attached? %>
+              <%= image_tag @post.image10.variant(resize_and_pad: [200, 200]) %>
              <% end %>
+             <a><%= @post.processimages.first.text10 %></a>
            <% end %>
          </p>
 
@@ -132,7 +132,7 @@
              <% end %>
 
          <% else %>
-         
+
           <p><%= link_to post_favorite_path(@post), method: :post do %></p>
               ♡<%= @post.favorites.count %>いいね
              <% end %>

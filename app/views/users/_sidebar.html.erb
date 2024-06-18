@@ -1,4 +1,4 @@
-<div claa="current_user">
+<div class="current_user">
    <p><%= user.name %>
     <%= link_to image_tag(user.get_profile_image, resize_to_fit: [200, 200]), user_path(user.id) %></p>
   <h4>Introduct</h4>
@@ -9,7 +9,7 @@
    <p>タグで検索</p>
    <p>
     <% tags.each do |tag| %>
-     <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+     <%= link_to tag.name, search_tag_path(tag_id: tag.id), class: "text-white" %>
     <% end %>
     </p>
 </div>
