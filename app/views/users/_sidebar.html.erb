@@ -1,6 +1,14 @@
-<div class="current_user">
-   <p><%= user.name %>
-    <%= link_to image_tag(user.get_profile_image, resize_to_fit: [200, 200]), user_path(user.id) %></p>
+<div class="container current_user">
+  <div class="row">
+    <div classs="">
+     <%= link_to image_tag(user.get_profile_image,  class: "rounded-circle img-fluid", size: "50x50"), user_path(user.id) %>
+    </div>
+    <div class="">
+     <%= user.name %>
+    </div>
+  </div>
+
+
   <h4>Introduct</h4>
    <p><%= user.introduct %></p>
 </div>
