@@ -125,19 +125,22 @@
          <%= link_to "この投稿者の愛車自慢を見る", user_path(@post.user) %>
         <% end %>
 
+
+        <!-- いいね機能 -->
         <div class="favorite">
-         <% if @post.favorited_by?(current_user) %>
-          <p><%= link_to post_favorite_path(@post), method: :delete do %></p>
+          <% if @post.favorited_by?(current_user) %>
+            <%= link_to post_favorite_path(@post), method: :delete do %>
               ❤<%= @post.favorites.count %>いいね
-             <% end %>
+            <% end %>
 
-         <% else %>
+          <% else %>
 
-          <p><%= link_to post_favorite_path(@post), method: :post do %></p>
+            <%= link_to post_favorite_path(@post), method: :post do %>
               ♡<%= @post.favorites.count %>いいね
-             <% end %>
-         <% end %>
+            <% end %>
+          <% end %>
         </div>
+
 
         <div class="comment">
          <div class="comment_views">

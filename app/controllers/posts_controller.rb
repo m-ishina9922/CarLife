@@ -48,9 +48,13 @@ class PostsController < ApplicationController
   end
 
   def update
+    byebug
     @post = Post.find(params[:id])
-    @post.update(post_form_params)
-    redirect_to post_path(@post.id)
+    if @post.update(post_form_params)
+      redirect_to post_path(@post.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

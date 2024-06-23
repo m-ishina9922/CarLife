@@ -21,15 +21,23 @@ Rails.application.routes.draw do
     passwords: "user/passwords"
   }
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+    get :favorites
+  end
+  end
 
 
   #投稿機能
   resources :posts, only: [:new, :create, :show, :index, :destroy, :edit, :update] do
     resources :post_comments, only: [:create]
     resource :favorite, only: [:create, :destroy]
+    member do
+    patch :edit
+  end
   end
   post 'posts/new' => 'posts#create'
+
 
 
 
