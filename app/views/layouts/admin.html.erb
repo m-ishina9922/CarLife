@@ -7,12 +7,46 @@
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<body>
-  <% if admin_signed_in? %>
-    <div class="text-right">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-    </div>
-  <% end %>
-  <%= yield %>
-</body>
+
+  <body class="d-flex flex-column vh-100">
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-xl p-1 bg-light" >
+      <div class="container-fluid">
+        <div class="p-3 text-white "><a class="navbar-brand text-black-50" href="/">CarLife.</a></div>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon" style="color: white;"></span>
+        </button>
+
+
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+           <ul class="navbar-nav ml-auto d-flex align-items-center">
+
+            <% if admin_signed_in? %>
+            <div class="text-right">
+              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+            </div>
+           </ul>
+             <% end %>
+      　  </div>
+      </div>
+      </nav>
+    </header>
+
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-light">
+      <div class="container-fluid">
+       <div class="row no-gutters">
+        <div class="col-md-4">
+         <p>車好きを繋げるSNS</p>
+         <a class="navbar-brand text-black-50" href="/">CarLife.</a>
+        </div><!--col-md-4-->
+       </div><!--row no-gutters-->
+      </div><!--container-->
+    </footer>
+ 　</body>
 </html>

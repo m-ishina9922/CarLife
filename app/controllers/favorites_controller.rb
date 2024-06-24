@@ -15,4 +15,5 @@ class FavoritesController < ApplicationController
     end
     redirect_to post_path(params[:post_id])
   end
+
 end

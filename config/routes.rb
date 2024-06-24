@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'dashboards', to: 'dashboards#index'
 
     resources :users, only: [:destroy, :show, :edit]
+    resources :post_comments, only: [:index]
+
   end
 
   #ユーザー機能
@@ -22,16 +24,13 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:show, :edit, :update] do
-    member do
-    get :favorites
-  end
   end
 
 
   #投稿機能
   resources :posts, only: [:new, :create, :show, :index, :destroy, :edit, :update] do
     resources :post_comments, only: [:create]
-    resource :favorite, only: [:create, :destroy]
+    resource :favorite, only: [:create, :destroy, :index]
     member do
     patch :edit
   end
