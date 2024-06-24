@@ -29,6 +29,7 @@ class PostsController < ApplicationController
   end
 
   def show
+
     @post = Post.find(params[:id])
     user_id = current_user.id
     @user = User.find(user_id)

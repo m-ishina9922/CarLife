@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'dashboards', to: 'dashboards#index'
 
     resources :users, only: [:destroy, :show, :edit]
-    resources :post_comments, only: [:index]
+    resources :post_comments, only: [:index, :destroy]
 
   end
 

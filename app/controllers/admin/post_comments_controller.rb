@@ -1,9 +1,14 @@
 class Admin::PostCommentsController < ApplicationController
 
   def index
-    #byebug
-    @posts = Post.all
-    @post_comments = PostComment.includes(:post).all#コメントの取得がうまくいかない
+    @post_comments = PostComment.all
     @users = User.all
   end
+
+  def destroy
+    @post_comment = PostComment.find(params[:id])
+    @post_comment.destroy
+    redirect_to admin_post_comments_path
+  end
+
 end
