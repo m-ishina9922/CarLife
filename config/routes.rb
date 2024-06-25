@@ -34,9 +34,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :show, :index, :destroy, :edit, :update] do
     resources :post_comments, only: [:create]
     resource :favorite, only: [:create, :destroy, :index]
-    member do
-    patch :edit
-  end
   end
   post 'posts/new' => 'posts#create'
 

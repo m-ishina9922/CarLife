@@ -29,7 +29,6 @@ class PostsController < ApplicationController
   end
 
   def show
-
     @post = Post.find(params[:id])
     user_id = current_user.id
     @user = User.find(user_id)
@@ -37,25 +36,6 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
     @tags = Tag.all           #サイドバータグ表示用
 
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-    @processimage = Processimage.find(@post.id)
-    #@tags = @post.tags.pluck(:name).join(',')
-    @tags = Tag.all           #サイドバータグ表示用
-    user_id = current_user.id #サイドバーのユーザー表示用
-    @user = User.find(user_id)
-  end
-
-  def update
-    byebug
-    @post = Post.find(params[:id])
-    if @post.update(post_form_params)
-      redirect_to post_path(@post.id)
-    else
-      render :edit
-    end
   end
 
   def destroy
