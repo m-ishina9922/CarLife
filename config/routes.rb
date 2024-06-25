@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     get 'dashboards', to: 'dashboards#index'
 
     resources :users, only: [:destroy, :show, :edit]
-    resources :post_comments, only: [:index, :destroy]
-
+    resources :post_comments, only: [:index]
+    delete 'post_comments', to: 'post_comments#destroy', as: 'delete_post_comment'
   end
 
   #ユーザー機能
