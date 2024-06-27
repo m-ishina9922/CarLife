@@ -19,21 +19,21 @@
         <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
       </div><!--サイドパーcol-xl-2-->
 
-      <div class="col-xl-10">
+      <div class="col-xl-8 px-5">
 
-        <h4>作業タイトル☆</h4>
+        <h4 class="pt-3">作業タイトル☆</h4>
         <p><%= @post.title %></p>
 
-         <h4>付けられたタグ</h4>
+         <h4 class="pt-3">付けられたタグ</h4>
          <p>
           <% @post.tags.each do |tag| %>
           <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
           <% end %>
          </p>
 
-        <h4>作業工程</h4>
+        <h4 class="pt-3">作業工程</h4>
 
-         <p>1.
+         <p class="border-bottom py-3">1.
              <% if @post.image1.attached? %>
               <%= image_tag @post.image1.variant(resize_and_pad: [200, 200]) %>
              <% end %>
@@ -42,92 +42,110 @@
 
          <p>
            <% if @post.processimages.first.text2.present? %>
+            <div class="border-bottom py-3">
              2.<% if @post.image2.attached? %>
               <%= image_tag @post.image2.variant(resize_and_pad: [200, 200]) %>
              <% end %>
               <a><%= @post.processimages.first.text2 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text3.present? %>
+            <div class="border-bottom py-3">
              3.<% if @post.image3.attached? %>
               <%= image_tag @post.image3.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text3 %></a>
+            </div>
            <% end %>
           </p>
 
           <p>
            <% if @post.processimages.first.text4.present? %>
+            <div class="border-bottom py-3">
              4.<% if @post.image4.attached? %>
               <%= image_tag @post.image4.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text4 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text5.present? %>
+            <div class="border-bottom py-3">
              5.<% if @post.image5.attached? %>
               <%= image_tag @post.image5.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text5 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text6.present? %>
+            <div class="border-bottom py-3">
              6.<% if @post.image6.attached? %>
               <%= image_tag @post.image6.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text6 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text7.present? %>
+            <div class="border-bottom py-3">
              7.<% if @post.image7.attached? %>
               <%= image_tag @post.image7.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text7 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text8.present? %>
+            <div class="border-bottom py-3">
              8.<% if @post.image8.attached? %>
               <%= image_tag @post.image8.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text8 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text9.present? %>
+            <div class="border-bottom py-3">
              9.<% if @post.image9.attached? %>
               <%= image_tag @post.image9.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text9 %></a>
+            </div>
            <% end %>
          </p>
 
           <p>
            <% if @post.processimages.first.text10.present? %>
+            <div class="border-bottom py-3">
              10.<% if @post.image10.attached? %>
               <%= image_tag @post.image10.variant(resize_and_pad: [200, 200]) %>
              <% end %>
              <a><%= @post.processimages.first.text10 %></a>
+            </div>
            <% end %>
          </p>
 
 
-        <h4>参考にしたサイトURL</h4>
+        <h4 class="pt-3">参考にしたサイトURL</h4>
          <p>
            <%= @post.reference_site %>
          </p>
 
-        <h4>使用した商品</h4>
+        <h4 class="pt-3">使用した商品</h4>
          <p>
            <%= @post.products_used %>
          </p>
@@ -138,21 +156,23 @@
          <%= link_to "この投稿者の愛車自慢を見る", user_path(@post.user) %>
         <% end %>
 
-
         <!-- いいね機能 -->
-        <div class="favorite">
+        <div class="favorite my-3">
           <% if @post.favorited_by?(current_user) %>
-            <%= link_to post_favorite_path(@post), method: :delete do %>
+            <button type="button" class="btn btn-outline-danger rounded-pill">
+             <%= link_to post_favorite_path(@post), method: :delete do %>
               ❤<%= @post.favorites.count %>いいね
-            <% end %>
+             <% end %>
+            </button>
 
           <% else %>
 
             <%= link_to post_favorite_path(@post), method: :post do %>
-              ♡<%= @post.favorites.count %>いいね
+              ♡<%= @post.favorites.count %>
             <% end %>
           <% end %>
-        </div>
+        </div><!--favorite text-right-->
+
 
 
         <div class="comment">
