@@ -1,16 +1,13 @@
-<div class="container-breakpoint my-5 bg-secondary">
-  <div class="row py-5 ">
+<%= stylesheet_link_tag 'top', media: 'all', 'data-turbolinks-track': 'reload' %>
+<div class="container-breakpoint top">
+  <div class="row py-1 ">
     <div class="col-sm-6 offset-sm-6 p-5">
-      <h1 class="catch-copy">めっちゃかっこいいキャッチコピー</h1>
-      <p>サンプル文章ねこちゃんも飼い主も、お互いが気持ちよく過ごすための部屋。
-      <br>こだわりのインテリアから、空間作りまでトータルコーディネート！
-      <br>自然を感じる親しみやすい部屋から、繊細なモチーフでフェミニンな部屋もお任せください！</p>
-
+      <h1 class="catch-copy py-5 text-white">あなたの心を乗せて、</br>いつも一緒に。</h1>
    </div><!--col-sm-6 offset-sm-6 p-5-->
 
-    <div class="btn mx-auto py-5 m-5">
-       <button type="button" class="btn btn-secondary"><%= link_to "はじめてみる？", new_user_registration_path, class: "text-white" %></button><br>
-       <button type="button" class="btn btn-secondary m-3"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post , class: "text-white" %></button>
+    <div class="btn mx-auto py-4 m-5">
+       <button type="button" class="btn btn-secondary text"><%= link_to "はじめてみる？", new_user_registration_path, class: "text-white mx-5" %></button><br>
+       <button type="button" class="btn btn-secondary text m-3"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post , class: "text-white mx-2" %></button>
       </div>
   </div><!--row-->
 </div><!--container-->

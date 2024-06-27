@@ -1,23 +1,10 @@
-<div class="container current_user">
-  <div class="row">
-    <div classs="">
-     <%= link_to image_tag(user.get_profile_image,  class: "rounded-circle img-fluid", size: "50x50"), user_path(user.id) %>
-    </div>
-    <div class="">
-     <%= user.name %>
-    </div>
-  </div>
-
-
-  <h4>Introduct</h4>
-   <p><%= user.introduct %></p>
-</div>
-
-<div class="search_tag">
-   <p>タグで検索</p>
+<div class="container search_tag">
+ <div class="row my-4 mx-1 text-white">
+   <h5>タグで検索</h5>
    <p>
     <% tags.each do |tag| %>
      <%= link_to tag.name, search_tag_path(tag_id: tag.id), class: "text-white" %>
     <% end %>
     </p>
+ </div><!--row-->
 </div>

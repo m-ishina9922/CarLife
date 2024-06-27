@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.top{
+  background-image: url(mv.jpg);
+  background-size: cover;
+}
+
+.text{
+   opacity: 90%;
+}
