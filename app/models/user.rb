@@ -28,6 +28,10 @@ class User < ApplicationRecord
     car_images.variant(resize_to_limit: [100, 100]).processed
   end
 
+  #退会済みのユーザーが同じアカウントでログインできないようにする
+   def active_for_authentication?
+     super && (is_valid == true)
+   end
 
 
 

@@ -24,10 +24,12 @@ class UsersController < ApplicationController
 
   # 論理削除処理
   def withdraw
-    respond_with_navigational do
-      sign_out current_user
-      redirect_to "/"
-    end
+    @user = User.find(current_user.id)
+    @user.update(is_valid: false)
+    reset_session
+    flash[:notice] = "退会しました"
+    redirect_to "/"
+
   end
 
   def check
