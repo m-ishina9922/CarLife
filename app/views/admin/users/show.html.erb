@@ -10,4 +10,10 @@
  <p><%= @user.email %></p>
 
 <h4>会員ステータス</h4>
- <p><%= @user.is_valid %></p>
+   <p>
+    <% if @user.is_valid == true %>
+     一般会員
+    <% else %>
+    退会済み
+    <% end %>
+   </p>
