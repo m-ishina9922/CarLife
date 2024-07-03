@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     user_id = current_user.id
     @user = User.find(user_id)
     @tags = Tag.all
+    @favorites = Favorite.all
 
   end
 

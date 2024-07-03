@@ -6,27 +6,26 @@
 
       <div class="col-xl-10 d-flex flex-wrap">
         <% @posts.each do |post| %>
-        <div class="border w-25 " style="height: 16rem;">
+        <div class="border w-25 m-2 " style="height: 18rem;">
            <% if post.image1.attached? %>
              <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])), class: "card-img-top " %>
            <% else %>
              <%= image_tag 'no_image', size: "200x200" %>
            <% end %>
 
-          <div class="card-body">
-            <div class="row">
-              <div class="col-3">
-                <%= image_tag post.user.get_profile_image, class: "mt-1 rounded-circle" %>
-              </div><!--col-2-->
+          <div class="post-body">
+            <div class="title ml-3">
+                <%= link_to post.title, post_path(post.id), class: "text-dark" %></br>
+                <%= image_tag post.user.get_profile_image, class: "mt-1 rounded-circle text-secondary", size: "25x25" %>
+                <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
+            </div>
 
-              <div class="col-9 ">
-                <p class="card-title">
-                  <%= link_to post.title, post_path(post.id) %></br>
-                  <%= link_to post.user.name, user_path(post.user)  %>
-                </p>
-              </div><!--col-10-->
-            </div><!--row-->
-          </div><!--card-body-->
+            <div class="favorites comment">
+                ♡<%= post.favorites.count %>
+                <i class="fa-regular fa-comment"></i>
+                <%= post.post_comments.count %>
+            </div>
+          </div><!--post-body-->
 
         </div><!--class="card" style="width: 15rem; height:17rem;-->
         <% end %>
