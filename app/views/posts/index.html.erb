@@ -4,10 +4,9 @@
         <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
       </div><!--サイドパーcol-xl-4-->
 
-      <div class="col-xl-10 d-flex">
-
+      <div class="col-xl-10 d-flex flex-wrap">
         <% @posts.each do |post| %>
-        <div class="card w-25" style="height: 16rem;">
+        <div class="border w-25 " style="height: 16rem;">
            <% if post.image1.attached? %>
              <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])), class: "card-img-top " %>
            <% else %>

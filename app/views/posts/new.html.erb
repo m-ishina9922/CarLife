@@ -4,29 +4,29 @@
       <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
     </div><!--サイドパーcol-xl-4-->
 
-    <div class="col-xl-10 mt-3">
-       <h1>投稿画面</h1>
+    <div class="col-xl-10 px-5">
        <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
        <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
 
-         <%= f.label :title, '作業タイトル' %><br/>
-           <%= f.text_field :title %><br/>
+         <%= f.label :title, '作業タイトル', class: "pt-3" %><br/>
+           <%= f.text_field :title, class: "w-75" %><br/>
 
-         <%= f.label :reference_site, '参照サイトURL' %><br/>
-           <%= f.text_field :reference_site %><br/>
+         <%= f.label :reference_site, '参照サイトURL', class: "pt-3" %><br/>
+           <%= f.text_field :reference_site, class: "w-75" %><br/>
 
-         <%= f.label :products_used, '使用した商品' %><br/>
-           <%= f.text_field :products_used %><br/>
+         <%= f.label :products_used, '使用した商品', class: "pt-3" %><br/>
+           <%= f.text_field :products_used, class: "w-75" %><br/>
 
 
            <% (1..10).each do |index| %>
-            <%= f.label :"text#{index}", "#{index}." %><br/>
-            <%= f.text_area :"text#{index}" %> <%= f.file_field :"image#{index}" %><br/>
+            <%= f.label :"text#{index}", "#{index}.", class: "pt-3" %><br/>
+            <%= f.text_area :"text#{index}", class: "pt-3 w-75" %></br>
+            <%= f.file_field :"image#{index}" %><br/>
            <% end %>
 
 
+           <%= f.text_area :name, placeholder: "タグを入力", class: "mt-3" %><br/>
         <p>スペースで区切って複数のタグをつけることができます</p>
-           <%= f.text_area :name, placeholder: "タグを入力" %><br/>
 
          <%= f.submit '投稿する' %><br/>
 

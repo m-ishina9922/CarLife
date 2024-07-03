@@ -66,13 +66,11 @@
              </li>
              <!--新規登録リンク-->
              <li class="nav-item">
-               <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark"%>
+               <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-dark" %>
              </li>
              <!--ログインリンク-->
              <li class="nav-item">
-               <%= link_to new_user_session_path do %>
-                <i class="fa-solid fa-right-to-bracket nav-link text-dark"></i>
-               <% end %>
+               <%= link_to "ログイン", new_user_session_path, class: "nav-link text-dark" %>
              </li>
 
              <% end %>
