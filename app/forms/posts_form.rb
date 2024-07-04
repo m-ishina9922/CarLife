@@ -67,7 +67,7 @@ class PostsForm
      post.tags << tag
      tag.save
    end
-   
+
 
 
    #投稿画像の

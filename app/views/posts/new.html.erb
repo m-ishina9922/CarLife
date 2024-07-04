@@ -1,10 +1,7 @@
 <div class="container-breakpoint">
   <div class="row">
-    <div class="col-xl-2" style="background-color: gray;">
-      <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
-    </div><!--サイドパーcol-xl-4-->
 
-    <div class="col-xl-10 px-5">
+    <div class="col-md-12 mx-5">
        <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
        <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
 
@@ -28,7 +25,7 @@
            <%= f.text_area :name, placeholder: "タグを入力", class: "mt-3" %><br/>
         <p>スペースで区切って複数のタグをつけることができます</p>
 
-         <%= f.submit '投稿する' %><br/>
+         <%= f.submit '投稿する' , class: 'nav-link text-white btn btn-secondary' %>
 
         <% end %>
 
