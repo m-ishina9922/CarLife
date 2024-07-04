@@ -14,15 +14,15 @@
            <% end %>
 
           <div class="post-body">
-            <div class="title ml-3">
+            <div class="title ml-3 ">
                 <%= link_to post.title, post_path(post.id), class: "text-dark" %></br>
                 <%= image_tag post.user.get_profile_image, class: "mt-1 rounded-circle text-secondary", size: "25x25" %>
                 <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
             </div>
 
-            <div class="favorites comment">
+            <div class="favorites comment px-3 text-secondary">
                 ♡<%= post.favorites.count %>
-                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-comment pl-3"></i>
                 <%= post.post_comments.count %>
             </div>
           </div><!--post-body-->

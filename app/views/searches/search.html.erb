@@ -4,41 +4,44 @@
       <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
      </div><!--サイドパーcol-xl-2-->
 
-      <div class="col-xl-10">
-       <div class="search_result">
+      <div class="col-xl-10 d-flex flex-wrap">
          <!--取得したモデルがUserだった場合はuserの検索結果を表示-->
          <% if @model == "User" %>
           <h3>検索結果：<%= @users.count %>件</h3>
            <% @users.each do |user| %>
-             <p><%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %></p>
-             <p><%= link_to user.name, user_path(user.id) %>
+             <%= image_tag user.get_profile_image, resize_and_pad: [200, 200] %>
+             <%= link_to user.name, user_path(user.id) %>
+             <%= user.introduct %>
            <% end %>
             <% if @users.size == 0 %>
               <h3>見つかりませんでした。</h3>
             <% end %>
+      </div>
 
+      <div class="col-xl-10 d-flex flex-wrap">
           <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
           <% elsif @model == "Post" %>
-           <h3>検索結果：<%= @posts.count %>件</h3>
-            <% @posts.each do |post| %>
-             <p>
-              <% if post.image1.attached? %>
-               <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 200])) %></p>
-              <% else %>
-               <%= image_tag "no_image", size: "200x200" %>
-              <% end %>
-             <p><%= link_to post.title, post_path(post.id) %>-<%= link_to post.user.name, user_path(post.user) %></p>
+           <h3 class="w-100">検索結果：<%= @posts.count %>件</h3>
+             <% @posts.each do |post| %>
+
+             <div class="border w-25 " style="height: 18rem;">
+               <% if post.image1.attached? %>
+                <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])), class: "card-img-top " %>
+               <% else %>
+                <%= image_tag "no_image", size: "200x200" %>
+               <% end %>
+                 <%= link_to post.title, post_path(post.id), class: "text-dark" %></br>
+                 <%= image_tag post.user.get_profile_image, class: "mt-1 rounded-circle text-secondary", size: "25x25" %>
+                 <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
+             </div><!--border-->
+
              <% end %>
 
-             <% if @posts.size == 0 %>
+                <% if @posts.size == 0 %>
                <h3>見つかりませんでした。</h3>
-             <% end %>
+                <% end %>
 
-            <!--それ以外の場合は検索結果がありません-->
-           <% else %>
-
-          <% end %>
-       </div><!--search_result-->
+          <% end %><!--if @mdoel-->
       </div><!--col-xl-10-->
    </div><!--row-->
 </div><!--container-->
