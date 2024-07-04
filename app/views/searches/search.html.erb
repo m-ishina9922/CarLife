@@ -4,39 +4,35 @@
       <%= render 'users/sidebar', user: @user, tags: @tags %><!--サイドバー-->
      </div><!--サイドパーcol-xl-2-->
 
-      <div class="col-xl-10">
+      <div class="col-xl-10 d-flex flex-wrap">
          <!--取得したモデルがUserだった場合はuserの検索結果を表示-->
          <% if @model == "User" %>
-          <h3>検索結果：<%= @users.count %>件</h3>
+         <h3 class="w-100">検索結果：<%= @users.count %>件</h3>
 
-           <div class="row mx-3">
-              <% @users.each do |user| %>
-              <div class="col-2 mb-3"><!-- 画像部分のcol -->
-               <%= link_to user_path(user.id) do %>
-                <%= image_tag user.get_profile_image, size: "150x150", class: "img-fluid" %>
-               <% end %>
-              </div>
+             <% @users.each do |user| %>
+               <div class="border w-25 m-2 " style="height: 18rem;"><!-- １セットのcol -->
+                 <%= link_to user_path(user.id) do %>
+                  <%= image_tag user.get_profile_image, size: "150x150", class: "img-fluid" %>
+                 <% end %>
 
-              <div class="col-10 mb-3"><!-- テキスト部分のcol -->
-                <%= link_to user_path(user.id) do %>
-                <h5 class="pt-3 text-secondary"><%= user.name %></h4>
-                <p class="text-secondary"><%= user.introduct %></p>
-                <% end %><!-- link_to -->
-              </div><!-- col-md-9 -->
-              <% end %>
-           </div><!--user-->
+                <div class="title ml-3 ">
+                  <%= link_to user_path(user.id) do %>
+                  <h5 class="pt-3 text-secondary"><%= user.name %></h4>
+                  <p class="text-secondary"><%= user.introduct %></p>
+                  <% end %>
+                </div>
+              </div><!--border-->
+           <% end %><!--@users.each do |user|-->
 
-            <% if @users.size == 0 %>
-              <h3>見つかりませんでした。</h3>
-            <% end %>
-      </div><!--col-xl-10-->
+           <% if @users.size == 0 %>
+             <h3>見つかりませんでした。</h3>
+           <% end %>
 
-          <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
-          <% elsif @model == "Post" %>
-
-      <div class="col-xl-12 d-flex flex-wrap">
-           <h3 class="w-100">検索結果：<%= @posts.count %>件</h3>
-             <% @posts.each do |post| %>
+         <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
+         <% elsif @model == "Post" %>
+          <h3 class="w-100">検索結果：<%= @posts.count %>件</h3>
+          <div class="col-xl-12 d-flex flex-wrap">
+           <% @posts.each do |post| %>
 
              <div class="border w-25 m-2" style="height: 18rem;">
                <% if post.image1.attached? %>
@@ -56,18 +52,19 @@
                    ♡<%= post.favorites.count %>
                    <i class="fa-regular fa-comment pl-3"></i>
                    <%= post.post_comments.count %>
-                </div>
+                </div><!--favorites comment-->
+
               </div><!--post-body-->
              </div><!--border-->
-             <% end %><!--@posts.each do |post|-->
-      </div><!--col-xl-10-->
+            <% end %><!--@posts.each do |post|-->
 
-               <% if @posts.size == 0 %>
-                <h3>見つかりませんでした。</h3>
-               <% end %>
+            <% if @posts.size == 0 %>
+              <h3>見つかりませんでした。</h3>
+            <% end %>
+          </div><!--col-xl-12-->
 
-          <% end %><!--if @mdoel-->
-
+         <% end %><!--if @mdoel-->
+    </div><!-- col-xl-10 -->
    </div><!--row-->
 </div><!--container-->
 
