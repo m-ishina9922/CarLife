@@ -25,13 +25,11 @@
         <p><%= @post.title %></p>
 
          <h4 class="pt-3">付けられたタグ</h4>
-         <p>
           <% @post.tags.each do |tag| %>
-          <%= link_to search_tag_path(tag_id: tag.id) do %>
+          <%= link_to search_tag_path(tag_id: tag.id), class: "btn btn-outline-secondary rounded-pill btn-sm" do %>
           #<%= tag.name %>
           <% end %>
           <% end %>
-         </p>
 
         <h4 class="pt-3">作業工程</h4>
 

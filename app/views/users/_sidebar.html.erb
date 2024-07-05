@@ -4,8 +4,10 @@
    <p>
     <% tags.each do |tag| %>
 
-     <%= button_to tag.name, search_tag_path(tag_id: tag.id), class: "btn btn-outline-light rounded-pill btn-sm" %>
+     <%= link_to search_tag_path(tag_id: tag.id), class: "btn btn-outline-light rounded-pill btn-sm my-1" do %>
+     <%= tag.name %>
      (<%= tag.posts.count %>)</br>
+     <% end %>
      <% end %>
 
     </p>
