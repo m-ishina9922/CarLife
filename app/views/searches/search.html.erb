@@ -10,7 +10,7 @@
          <h3 class="w-100">検索結果：<%= @users.count %>件</h3>
 
              <% @users.each do |user| %>
-               <div class="border w-25 m-2 " style="height: 18rem;"><!-- １セットのcol -->
+               <div class="border m-2 " style="height: 15rem; width: 12rem;"><!-- １セットのcol -->
                  <%= link_to user_path(user.id) do %>
                   <%= image_tag user.get_profile_image, size: "150x150",  class: "img-fluid mx-auto d-block" %>
                  <% end %>
@@ -34,7 +34,7 @@
           <div class="col-xl-12 d-flex flex-wrap">
            <% @posts.each do |post| %>
 
-             <div class="border w-25 m-2" style="height: 18rem;">
+             <div class="border m-2" style="height: 15rem; width: 12rem;">
                <% if post.image1.attached? %>
                 <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])), class: "card-img-top " %>
                <% else %>

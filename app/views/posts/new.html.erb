@@ -1,23 +1,23 @@
 <div class="container-breakpoint">
   <div class="row">
 
-    <div class="col-md-12 mx-5">
+    <div class="col-md-6 mx-auto">
        <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
        <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
 
          <%= f.label :title, '作業タイトル', class: "pt-3" %><br/>
-           <%= f.text_field :title, class: "w-75" %><br/>
+           <%= f.text_field :title, class: "w-100" %><br/>
 
          <%= f.label :reference_site, '参照サイトURL', class: "pt-3" %><br/>
-           <%= f.text_field :reference_site, class: "w-75" %><br/>
+           <%= f.text_field :reference_site, class: "w-100" %><br/>
 
          <%= f.label :products_used, '使用した商品', class: "pt-3" %><br/>
-           <%= f.text_field :products_used, class: "w-75" %><br/>
+           <%= f.text_field :products_used, class: "w-100" %><br/>
 
 
            <% (1..10).each do |index| %>
             <%= f.label :"text#{index}", "#{index}.", class: "pt-3" %><br/>
-            <%= f.text_area :"text#{index}", class: "pt-3 w-75" %></br>
+            <%= f.text_area :"text#{index}", class: "pt-3 w-100" %></br>
             <%= f.file_field :"image#{index}" %><br/>
            <% end %>
 

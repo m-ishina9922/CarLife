@@ -1,38 +1,49 @@
-<h1>プロフィール編集</h1>
+<div class="container-breakpoint">
+  <div class="row">
 
-<%= form_with model: @user do |f| %>
+    <div class="col-md-6 mx-auto">
 
-<label for="inputName">Name</label>
- <p><%= f.text_field :name, autofocus: true, id: "InputName", placeholder: "ユーザー名" %></p>
+      <%= form_with model: @user do |f| %>
 
-<label for="inputImage">Icon</label>
-<p><%= f.file_field :profile_image, placeholder: "ユーザーアイコン", accept: "image/*" %></p>
+       <div class="h4 my-4 border-bottom">
+        <label for="inputName">Name</label>
+       </div>
+        <p><%= f.text_field :name, autofocus: true, id: "InputName", placeholder: "ユーザー名" , class: "w-100" %></p>
 
-<label for="inputIntroduct">Introduct</label>
-<p><%= f.text_field :introduct, autofocus: true, id: "InputIntroduct", placeholder: "Introduct" %></p>
+       <div class="h4 my-4 border-bottom">
+        <label for="inputImage">Icon</label>
+       </div>
+        <p><%= f.file_field :profile_image, placeholder: "ユーザーアイコン", accept: "image/*" %></p>
 
-<label for="inputIntroduct">CarIntroduct</label>
-<p><%= f.text_field :car_introduct, autofocus: true, id: "InputIntroduct", placeholder: "Introduct" %></p>
+       <div class="h4 my-4 border-bottom">
+        <label for="inputIntroduct">Introduct</label>
+       </div>
+        <p><%= f.text_area :introduct, autofocus: true, id: "InputIntroduct", placeholder: "Introduct" , class: "w-100" %></p>
 
-<lanel for="inputCarimage">My Car Photo</label>
-  <p><%= f.file_field :car_images, placeholder: "My Car Photo", multiple: true %></p>
+       <div class="h4 my-4 border-bottom">
+        <label for="inputIntroduct">CarIntroduct</label>
+       </div>
+        <p><%= f.text_area :car_introduct, autofocus: true, id: "InputIntroduct", placeholder: "Introduct" , class: "w-100" %></p>
 
+       <div class="h4 my-4 border-bottom">
+        <lanel for="inputCarimage">My Car Photo</label>
+       </div>
+        <p><%= f.file_field :car_images, placeholder: "My Car Photo", multiple: true %></p>
 
-<div>
+       <div>
+         <% if @user.car_images.attached? %>
+          <p>削除するものにチェックを付けてください</p>
+          <% @user.car_images.each do |car_image| %>
+           <!--チェックボックスを表示-->
+           <%= f.check_box :car_image_ids, {multiple: true}, car_image.id, false %>
+           <%= image_tag car_image.variant(resize_to_fit: [200, 200]) %>
+          <% end %>
+         <% end %>
+        </div>
 
-  <% if @user.car_images.attached? %>
-   <p>削除するものにチェックを付けてください</p>
-   <% @user.car_images.each do |car_image| %>
-    <!--チェックボックスを表示-->
-    <%= f.check_box :car_image_ids, {multiple: true}, car_image.id, false %>
-    <%= image_tag car_image.variant(resize_to_fit: [200, 200]) %>
-   <% end %>
-  <% end %>
-</div>
+      <%= f.submit "変更を保存", class: 'text-white btn btn-secondary m-2' %>
+      <% end %>
 
+   </div><!--row-->
+ </div><!--container-->
 
-
-
-
-<%= f.submit "変更を保存" %>
-<% end %>

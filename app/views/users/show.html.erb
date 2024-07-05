@@ -1,40 +1,70 @@
-<h1>User Profile</h1>
-<div>
-  <p><%= @user.name %>
-   <%= image_tag @user.get_profile_image, resize_to_fit: [200, 200] %></p>
-   <h4>Introduct</h4>
-  <p><%= @user.introduct %><p>
-</div>
+<div class="container-breakpoint">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h1 class="p-4 text-white" style="background-color: gray;"><%= @user.name %>s Profile</h1>
+      <div class="user-profile">
 
-  <h4>Mycar Introduct</h4>
-  <p><%= @user.car_introduct %></p>
+        <div class="row">
+         <div class="session col-12 text-right">
+          <% if @user.id == current_user.id %>
+           <%= link_to "編集", edit_user_path , class: 'text-white btn btn-secondary m-2' %><%= link_to "退会", user_check_path(current_user), class: 'text-white btn btn-secondary m-2'  %>
+          <% end %>
+         </div>
+          <div class="h4 px-5 py-5 col-9"><%= @user.name %></div>
+          <div class="col-3"><%= image_tag @user.get_profile_image, size: "150x150" %></div>
+        </div>
 
-  <h4>Mycar Photo</h4>
-  <div>
-    <% if @user.car_images.attached? %>
-    　<% @user.car_images.each do |car_image| %>
-       <%= image_tag car_image.variant(resize_to_fit: [200, 200]) %>
-      <% end %>
-    <% else %>
-      <%= image_tag "no_image", size: "200x200" %>
-    <% end %>
-  </div>
+        <div class="h4 my-4 border-bottom">Introduct</div>
+        <div class="px-2 pb-4"><%= @user.introduct %></div>
 
-</div>
+        <div class="h4 my-4 border-bottom">Mycar Introduct</div>
+        <div class="px-2 pb-4"><%= @user.car_introduct %></div>
 
-  <% if @user.id == current_user.id %>
-  <%= link_to "編集", edit_user_path %> - <%= link_to "退会", user_check_path(current_user) %>
-  <% end %>
-</div>
+        <div class="h4 my-4 border-bottom">Car photo</div>
+        <div>
+         <% if @user.car_images.attached? %>
+        　<% @user.car_images.each do |car_image| %>
+           <%= image_tag car_image.variant(resize_to_fit: [200, 200]) %>
+          <% end %>
+         <% else %>
+           <%= image_tag "no_image", size: "200x200" %>
+         <% end %>
+        </div>
 
-<h4>投稿一覧</h4>
-<div>
-  <% @post.each do |post| %>
-  <p>
-  <%= link_to post.title, post_path(post.id) %>
-  </p>
-  <% end %>
-</div>
 
-<%= link_to "いいね一覧", favorites_user_path %>
 
+         <div class="h4 my-4 border-bottom">投稿一覧</div>
+          <div class="row">
+            <div class="col-xl-12 d-flex flex-wrap">
+              <% @post.each do |post| %>
+              <div class="border m-2 " style="height: 15rem; width: 12rem;">
+                 <% if post.image1.attached? %>
+                   <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])), class: "card-img-top " %>
+                 <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                 <% end %>
+
+               <div class="post-body">
+                 <div class="title ml-3 ">
+                     <%= link_to post.title, post_path(post.id), class: "text-dark" %></br>
+                     <%= image_tag post.user.get_profile_image, class: "mt-1 rounded-circle text-secondary", size: "25x25" %>
+                     <%= link_to post.user.name, user_path(post.user), class: "text-secondary" %>
+                 </div>
+
+                 <div class="favorites comment px-3 text-secondary">
+                     ♡<%= post.favorites.count %>
+                     <i class="fa-regular fa-comment pl-3"></i>
+                     <%= post.post_comments.count %>
+                 </div>
+               </div><!--post-body-->
+        </div><!--class="card" style="width: 15rem; height:17rem;-->
+        <% end %>
+       </div><!--メインコンテンツcol-xl-10-->
+    </div><!--col-12-->
+   </div><!--row-->
+   <div class="row">
+    <div class="col-12 text-right">
+     <%= link_to "いいねした投稿を見る", favorites_user_path , class: 'text-white btn btn-secondary m-2' %>
+    </div>
+   </div>
+</div><!--container-->

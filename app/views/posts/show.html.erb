@@ -151,9 +151,9 @@
          </p>
 
         <% if current_user.id == @post.user.id %>
-         <%= link_to "削除", post_path(@post.id), method: :delete %>
+         <%= link_to "投稿を削除", post_path(@post.id), method: :delete , class: 'text-white btn btn-secondary m-2' %>
         <% else %>
-         <%= link_to "この投稿者の愛車自慢を見る", user_path(@post.user) %>
+         <%= link_to "この投稿者の愛車自慢を見る", user_path(@post.user), class: 'text-white btn btn-secondary m-2'  %>
         <% end %>
 
         <!-- いいね機能 -->

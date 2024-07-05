@@ -2,19 +2,23 @@
    <div class="row">
       <div class="col-xl-2" style="background-color: gray;">
        <h4>管理者</h4><!--サイドバー-->
-         <%= link_to "コメント一覧", admin_post_comments_path %>
+         <%= link_to "コメント一覧", admin_post_comments_path , class: "text-white" %>
       </div><!--サイドパーcol-xl-4-->
 
-<h1>ユーザー一覧</h1>
-<ul>
-  <% @users.each do |user| %>
-  <table>
-  <p>
-  <%= user.id %> -
-  <%= user.name %> -
-  <%= user.email %> -
-  <%= link_to '詳細', admin_user_path(user.id) %>
-  <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></p>
-  </table>
-  <% end %>
-</ul>
+      <div class="col-10">
+       <div class="h4 my-4 border-bottom">ユーザー一覧</div>
+        <ul>
+         <% @users.each do |user| %>
+         <table>
+          <p>
+           <%= user.id %> -
+           <%= user.name %> -
+           <%= user.email %> -
+           <%= link_to '詳細', admin_user_path(user.id) %>
+           <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></p>
+           </table>
+         <% end %>
+        </ul>
+     </div>
+   </div><!--row-->
+</div><!--container-->
