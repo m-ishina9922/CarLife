@@ -21,7 +21,7 @@
 
       <div class="col-xl-8 px-5">
 
-        <h4 class="pt-3">作業タイトル☆</h4>
+        <h4 class="pt-3">作業タイトル</h4>
         <p><%= @post.title %></p>
 
          <h4 class="pt-3">付けられたタグ</h4>
@@ -159,19 +159,15 @@
         <!-- いいね機能 -->
         <div class="favorite my-3">
           <% if @post.favorited_by?(current_user) %>
-            <button type="button" class="btn btn-outline-danger rounded-pill">
-             <%= link_to post_favorite_path(@post), method: :delete do %>
+             <%= link_to post_favorite_path(@post), method: :delete, class: "btn btn-danger rounded-pill" do %>
               ❤<%= @post.favorites.count %>いいね
              <% end %>
-            </button>
 
           <% else %>
 
-            <button type="button" class="btn btn-outline-danger rounded-pill btn-sm">
-             <%= link_to post_favorite_path(@post), method: :post do %>
+             <%= link_to post_favorite_path(@post), method: :post, class: "btn btn-outline-danger rounded-pill" do %>
                ♡<%= @post.favorites.count %>いいね
              <% end %>
-            </button>
           <% end %>
         </div><!--favorite text-right-->
 
