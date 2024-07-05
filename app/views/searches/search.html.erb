@@ -36,7 +36,9 @@
 
              <div class="border m-2" style="height: 15rem; width: 12rem;">
                <% if post.image1.attached? %>
-                <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])), class: "card-img-top " %>
+                <%= link_to post_path(post.id) do %>
+                 <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])),  class: "card-img-top " %>
+                <% end %>
                <% else %>
                 <%= image_tag "no_image", size: "200x200" %>
                <% end %>

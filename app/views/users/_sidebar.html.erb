@@ -3,8 +3,11 @@
    <h5>タグで検索</h5>
    <p>
     <% tags.each do |tag| %>
-     <%= link_to tag.name, search_tag_path(tag_id: tag.id), class: "text-white" %></br>
-    <% end %>
+
+     <%= button_to tag.name, search_tag_path(tag_id: tag.id), class: "btn btn-outline-light rounded-pill btn-sm" %>
+     (<%= tag.posts.count %>)</br>
+     <% end %>
+
     </p>
  </div><!--row-->
 </div>

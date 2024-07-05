@@ -27,7 +27,9 @@
          <h4 class="pt-3">付けられたタグ</h4>
          <p>
           <% @post.tags.each do |tag| %>
-          <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+          <%= link_to search_tag_path(tag_id: tag.id) do %>
+          #<%= tag.name %>
+          <% end %>
           <% end %>
          </p>
 
@@ -167,7 +169,7 @@
 
           <% else %>
 
-            <button type="button" class="btn btn-outline-danger rounded-pill">
+            <button type="button" class="btn btn-outline-danger rounded-pill btn-sm">
              <%= link_to post_favorite_path(@post), method: :post do %>
                ♡<%= @post.favorites.count %>いいね
              <% end %>
@@ -190,7 +192,7 @@
          <div class="comment_form">
           <%= form_with model: [@post, @post_comment] do |f| %>
            <%= f.text_field :comment, rows: '5', placeholder: "コメントする" %>
-           <%= f.submit "送信" %>
+           <%= f.submit "送信", class: 'text-white btn btn-secondary m-2' %>
           <% end %>
          </div>
         </div>
