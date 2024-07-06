@@ -2,12 +2,17 @@
 <div class="container-breakpoint top">
   <div class="row py-1 ">
     <div class="col-sm-6 offset-sm-6 p-5">
-      <h1 class="catch-copy py-5 text-white">あなたの愛車で</br>素敵なCarLifeを。</h1>
+     <div class="w-100 text-white"><%= flash.now[:notice] %></div>
+      <h1 class="catch-copy py-5 text-white">あなたの愛車と</br>素敵なCarLifeを。</h1>
    </div><!--col-sm-6 offset-sm-6 p-5-->
 
     <div class="btn mx-auto py-4 m-5">
+      <% if user_signed_in? %>
+       <button type="button" class="btn btn-secondary text"><%= link_to "HOMEへ", posts_path, class: "text-white mx-5" %></button>
+      <% else %>
        <button type="button" class="btn btn-secondary text"><%= link_to "はじめてみる？", new_user_registration_path, class: "text-white mx-5" %></button><br>
        <button type="button" class="btn btn-secondary text m-3"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post , class: "text-white mx-2" %></button>
+      <% end %>
       </div>
   </div><!--row-->
 </div><!--container-->

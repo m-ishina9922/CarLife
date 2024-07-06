@@ -15,8 +15,10 @@ class PostsController < ApplicationController
     @post_form.user_id = current_user.id
     if @post_form.valid?
       @post_form.save_post #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
+      flash[:notice] = "投稿に成功しました。"
      redirect_to posts_path
     else
+     flash.now[:notice] = "投稿に失敗しました"
      render :new
     end
   end

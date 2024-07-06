@@ -1,5 +1,12 @@
-<h1>本当に退会してもよろしいですか？</h1>
+<div class="container-breakpoint">
+  <div class="row">
+    <div class="col-12 text-center">
+       <h1 class="my-5">本当に退会してもよろしいですか？</h1>
 
-<p>退会する場合は「退会する」をクリックしてください</p>
+       <p class="my-5">退会する場合は「退会する」をクリックしてください</p>
 
-<%= link_to "退会しない", user_path(current_user.id) %> - <%= link_to "退会する", user_withdraw_path(current_user.id), method: :delete, data: {confirm: "本当に退会しますか？" } %>
+       <%= link_to "退会しない", user_path(current_user.id) , class: "btn btn-primary mx-3" %>
+       <%= link_to "退会する", user_withdraw_path(current_user.id), method: :delete, data: {confirm: "本当に退会しますか？" } , class: "btn btn-danger mx-3"%>
+    </div><!--col-12-->
+  </div><!--row-->
+</div><!--container-->

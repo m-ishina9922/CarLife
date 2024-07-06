@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_valid: false)
     reset_session
-    flash[:notice] = "退会しました"
+    flash.now[:notice] = "退会しました"
     redirect_to "/"
 
   end

@@ -5,8 +5,9 @@
       </div><!--サイドパーcol-xl-4-->
 
       <div class="col-xl-10 d-flex flex-wrap">
+        <div class="w-100"><%= flash[:notice] %></div>
         <% @posts.each do |post| %>
-        <div class="border  m-2" style="height: 18rem; width: 12rem;">
+        <div class="border  m-2" style="height: 15rem; width: 12rem;">
            <% if post.image1.attached? %>
              <%= link_to post_path(post.id) do %>
               <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])),  class: "card-img-top " %>

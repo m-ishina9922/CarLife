@@ -1,13 +1,15 @@
 <div class="container-breakpoint">
   <div class="row">
 
-    <ul>
-  <% @post_form.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
 
     <div class="col-md-6 mx-auto">
+    <div class="w-100"><%= flash[:notice] %></div>
+    <ul>
+     <% @post_form.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+     <% end %>
+    </ul>
+
        <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
        <%= form_with(scope: @post_form, url: posts_new_path, local: true)  do |f| %>
 

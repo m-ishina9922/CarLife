@@ -8,7 +8,8 @@
          <!--取得したモデルがUserだった場合はuserの検索結果を表示-->
          <% if @model == "User" %>
          <h3 class="w-100">検索結果：<%= @users.count %>件</h3>
-
+         <div class="row">
+          <div class="col-10 d-flex flex-wrap">
              <% @users.each do |user| %>
                <div class="border m-2 " style="height: 15rem; width: 12rem;"><!-- １セットのcol -->
                  <%= link_to user_path(user.id) do %>
@@ -23,15 +24,19 @@
                 </div>
               </div><!--border-->
            <% end %><!--@users.each do |user|-->
+          </div>
 
-           <% if @users.size == 0 %>
-             <h3>見つかりませんでした。</h3>
-           <% end %>
+
+          <% if @users.size == 0 %>
+            <h3>見つかりませんでした。</h>
+          <% end %>
+
+
 
          <!--取得したモデルがPostだった場合はpostの検索結果を表示-->
          <% elsif @model == "Post" %>
           <h3 class="w-100">検索結果：<%= @posts.count %>件</h3>
-          <div class="col-xl-12 d-flex flex-wrap">
+          <div class="col-12 d-flex flex-wrap">
            <% @posts.each do |post| %>
 
              <div class="border m-2" style="height: 15rem; width: 12rem;">
@@ -66,7 +71,7 @@
           </div><!--col-xl-12-->
 
          <% end %><!--if @mdoel-->
-    </div><!-- col-xl-10 -->
+         </div>
    </div><!--row-->
 </div><!--container-->
 
