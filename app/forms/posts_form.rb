@@ -49,42 +49,51 @@ class PostsForm
   #バリデーション
   validates :title, presence: true
   validates :text1, presence: true
+  validates :name, presence: true
 
 
 
  #保存処理
  def save_post
-   post =Post.create(user_id: user_id, title: title, reference_site: reference_site, products_used: products_used)
-   Processimage.create(user_id: user_id, text1: text1, text2: text2, text3: text3, text4: text4, text5: text5, text6: text6, text7: text7, text8: text8, text9: text9, text10: text10, post_id: post.id)
+  if valid?
+   post =Post.create(
+     user_id: user_id,
+     title: title,
+     reference_site: reference_site,
+     products_used: products_used)
+
+   Processimage.create(
+     user_id: user_id,
+     text1: text1,
+     text2: text2,
+     text3: text3,
+     text4: text4,
+     text5: text5,
+     text6: text6,
+     text7: text7,
+     text8: text8,
+     text9: text9,
+     text10: text10,
+     post_id: post.id)
 
     #入力されたタグを空白で区切って配列化する
    tag_list = name.split(/[[:blank:]]+/).select(&:present?)
 
    tag_list.each do |new_tag|
-     #nemeをfindし、すでに値があれば取得、nilならば作成する
      tag = Tag.find_or_create_by(name: new_tag)
-     #新規tagのみpostに関連付ける
      post.tags << tag
      tag.save
    end
 
+   # 投稿画像の添付
+   (1..10).each do |i|
+     image_field = send("image#{i}")
+     post.send("image#{i}").attach(image_field) if image_field.present?
+   end
 
-
-   #投稿画像の
-   post.image1.attach(image1)
-   post.image2.attach(image2)
-   post.image3.attach(image3)
-   post.image4.attach(image4)
-   post.image5.attach(image5)
-   post.image6.attach(image6)
-   post.image7.attach(image7)
-   post.image8.attach(image8)
-   post.image9.attach(image9)
-   post.image10.attach(image10)
-
+   return true
+  else
+   return false
+  end
  end
-
 end
-
-
-

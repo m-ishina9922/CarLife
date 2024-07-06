@@ -10,9 +10,11 @@ class PostsController < ApplicationController
   end
 
   def create
+    #byebug
     @post_form = PostsForm.new(post_form_params)
     @post_form.user_id = current_user.id
-    if @post_form.save_post #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
+    if @post_form.valid?
+      @post_form.save_post #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
      redirect_to posts_path
     else
      render :new

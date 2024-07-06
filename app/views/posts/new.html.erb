@@ -1,9 +1,15 @@
 <div class="container-breakpoint">
   <div class="row">
 
+    <ul>
+  <% @post_form.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+
     <div class="col-md-6 mx-auto">
        <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
-       <%= form_with(model: @post_form, url: posts_new_path, local: true)  do |f| %>
+       <%= form_with(scope: @post_form, url: posts_new_path, local: true)  do |f| %>
 
          <%= f.label :title, '作業タイトル', class: "pt-3" %><br/>
            <%= f.text_field :title, class: "w-100" %><br/>
