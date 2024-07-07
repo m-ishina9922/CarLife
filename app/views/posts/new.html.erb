@@ -5,13 +5,13 @@
     <div class="col-md-6 mx-auto">
     <div class="w-100"><%= flash[:notice] %></div>
     <ul>
-     <% @post_form.errors.full_messages.each do |msg| %>
+     <% @post.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
      <% end %>
     </ul>
 
-       <!-- formオブジェクトのインスタンス(@post_form)を指定する　-->
-       <%= form_with(scope: @post_form, url: posts_new_path, local: true)  do |f| %>
+       <!-- formオブジェクトのインスタンス(@post)を指定する　-->
+       <%= form_with(scope: @post, url: posts_new_path, local: true)  do |f| %>
 
          <%= f.label :title, '作業タイトル', class: "pt-3" %><br/>
            <%= f.text_field :title, class: "w-100" %><br/>
@@ -23,14 +23,18 @@
            <%= f.text_field :products_used, class: "w-100" %><br/>
 
 
-           <% (1..10).each do |index| %>
-            <%= f.label :"text#{index}", "#{index}.", class: "pt-3" %><br/>
-            <%= f.text_area :"text#{index}", class: "pt-3 w-100" %></br>
-            <%= f.file_field :"image#{index}" %><br/>
-           <% end %>
+           <%# (1..10).each do |index| %>
+            <%#= f.label :"text#{index}", "#{index}.", class: "pt-3" %><br/>
+            <%#= f.text_area :"text#{index}", class: "pt-3 w-100" %></br>
+            <%#= f.file_field :"image#{index}" %><br/>
+           <%# end %>
+         <%= f.fields_for :processimages do |ff| %>
+           <%= ff.text_area :text %><br>
+           <%= ff.file_field :image %><br><br>
+         <% end %>
 
 
-           <%= f.text_area :name, placeholder: "タグを入力", class: "mt-3" %><br/>
+           <%= f.text_area :tag_string, placeholder: "タグを入力", class: "mt-3" %><br/>
         <p>スペースで区切って複数のタグをつけることができます</p>
 
          <%= f.submit '投稿する' , class: 'nav-link text-white btn btn-secondary' %>

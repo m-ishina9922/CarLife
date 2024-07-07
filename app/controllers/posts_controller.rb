@@ -1,19 +1,16 @@
 class PostsController < ApplicationController
   def new
     #formオブジェクトのインスタンスを使う
-    @post_form = PostsForm.new
+    @post = current_user.posts.new
     @tags = Tag.all           #サイドバータグ表示用
-    user_id = current_user.id #サイドバーのユーザー表示用
-    @user = User.find(user_id)
-
-
+    @user = current_user
+    10.times { @post.processimages.build }
   end
 
   def create
-    @post_form = PostsForm.new(post_form_params)
-    @post_form.user_id = current_user.id
-    if @post_form.valid?
-      @post_form.save_post #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      #@post_form.save_post #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
       flash[:notice] = "投稿に成功しました。"
      redirect_to posts_path
     else
@@ -60,44 +57,14 @@ class PostsController < ApplicationController
 
   private
 
+
   def post_params
     params.require(:post).permit(
-      :reference_site,
-      :products_used,
-      :title,
-      )
-  end
-
-  def post_form_params
-    params.require(:posts_form).permit(
-      :user_id,
       :title,
       :reference_site,
       :products_used,
-      :text1,
-      :text2,
-      :text3,
-      :text4,
-      :text5,
-      :text6,
-      :text7,
-      :text8,
-      :text9,
-      :text10,
-      :post_id,
-      :name,
-      :tag_id,
-      :images,
-      :image1,
-      :image2,
-      :image3,
-      :image4,
-      :image5,
-      :image6,
-      :image7,
-      :image8,
-      :image9,
-      :image10,
+      :tag_string,
+      processimages_attributes: [:text, :image]
       )
   end
 

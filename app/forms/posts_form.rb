@@ -62,19 +62,19 @@ class PostsForm
      reference_site: reference_site,
      products_used: products_used)
 
-   Processimage.create(
-     user_id: user_id,
-     text1: text1,
-     text2: text2,
-     text3: text3,
-     text4: text4,
-     text5: text5,
-     text6: text6,
-     text7: text7,
-     text8: text8,
-     text9: text9,
-     text10: text10,
-     post_id: post.id)
+   #Processimage.create(
+     # user_id: user_id,
+     # text1: text1,
+     # text2: text2,
+     # text3: text3,
+     # text4: text4,
+     # text5: text5,
+     # text6: text6,
+     # text7: text7,
+     # text8: text8,
+     # text9: text9,
+     # text10: text10,
+     # post_id: post.id)
 
     #入力されたタグを空白で区切って配列化する
    tag_list = name.split(/[[:blank:]]+/).select(&:present?)
