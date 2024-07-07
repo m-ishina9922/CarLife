@@ -5,7 +5,6 @@
 }
 
 .top{
-  background-image: url(IMG_7758.jpg);
+  background-image: image-url('IMG_7758.jpg');
   background-size: cover;
 }
-
