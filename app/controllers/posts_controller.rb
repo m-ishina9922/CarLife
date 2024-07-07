@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    #byebug
     @post_form = PostsForm.new(post_form_params)
     @post_form.user_id = current_user.id
     if @post_form.valid?

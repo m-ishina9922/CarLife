@@ -6,7 +6,7 @@ class User::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to about_path, notice: 'ゲストとしてログインしました'
+    redirect_to "/", notice: 'ゲストとしてログインしました'
   end
 
  #ログイン機能
@@ -18,15 +18,15 @@ class User::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resourced)
     about_path
   end
-  
+
   #退会後のログインを阻止する機能
   def reject_inactive_user
     @user = User.find(name: params[:user][:name])
-    if @user 
+    if @user
       if @user.valid_password?(params[:user][:password]) && !@user.is_valid
         redirecr_to new_user_session_path
-      end 
-    end 
+      end
+    end
   end
 
   protected
