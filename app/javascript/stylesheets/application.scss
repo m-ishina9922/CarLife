@@ -1,1 +1,12 @@
 @use '~bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.top{
+  background-image: url('../images/IMG_7758.jpg');
+  background-size: cover;
+}
