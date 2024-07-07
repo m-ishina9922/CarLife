@@ -87,8 +87,8 @@ class PostsForm
 
    # 投稿画像の添付
    (1..10).each do |i|
-     image_field = send("image#{i}")
-     post.send("image#{i}").attach(image_field) if image_field.present?
+     #image_field = send("image#{i}")
+     #post.send("image#{i}").attach(image_field) if image_field.present?
    end
 
    return true
