@@ -9,15 +9,15 @@
         <% @posts.each do |post| %>
         <div class="border  m-2" style="height: 15rem; width: 12rem;">
           <div class="d-flex justify-content-center">
-           <% if post.image1.attached? %>
+           <% if post.image.attached? %>
              <%= link_to post_path(post.id) do %>
-              <%= image_tag url_for(post.image1.variant(resize_and_pad: [200, 130])),  class: "card-img-top " %>
+              <%= image_tag url_for(post.image.variant(resize_and_pad: [200, 130])),  class: "card-img-top " %>
              <% end %>
            <% else %>
              <%= image_tag 'no_image.jpg', size: "130x130" %>
            <% end %>
           </div>
-          
+
           <div class="post-body">
             <div class="title ml-3 ">
                 <%= link_to post.title, post_path(post.id), class: "text-dark " %></br>

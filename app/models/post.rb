@@ -1,10 +1,12 @@
 class Post < ApplicationRecord
   attr_accessor :tag_string
-  
+
   belongs_to :user
   has_many :processimages, dependent: :destroy
-  accepts_nested_attributes_for :processimages, allow_destroy: true
-  
+
+  #:processimagesを子レコードとして作成、:textと:imageが空の時はパラメーターを削除する
+  accepts_nested_attributes_for :processimages, reject_if: proc { |attributes| attributes['text'].blank? && attributes['image'].blank? }, allow_destroy: true
+
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
