@@ -14,8 +14,10 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿に成功しました。"
      redirect_to posts_path
     else
-     flash.now[:notice] = "投稿に失敗しました"
-     render :new
+      processimage_count = @post.processimages.size
+      (10 - processimage_count).times { @post.processimages.build }
+      flash.now[:notice] = "投稿に失敗しました"
+      render :new
     end
   end
 
