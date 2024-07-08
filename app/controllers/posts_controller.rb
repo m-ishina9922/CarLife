@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:processimages)
     user_id = current_user.id
     @user = User.find(user_id)
     @tags = Tag.all
@@ -61,7 +61,7 @@ class PostsController < ApplicationController
       :title,
       :reference_site,
       :products_used,
-      :tag_string,
+      :tags_string,
       processimages_attributes: [:text, :image]
       )
   end

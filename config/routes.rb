@@ -36,10 +36,6 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy, :index]
   end
 
-
-
-
-
   #ゲストログイン機能
   devise_scope :user do
   post 'users/guest_sign_in', to: 'user/sessions#guest_sign_in'
@@ -62,5 +58,5 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about', to: 'homes#about', as: :about
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  post 'posts/new' => 'posts#create'
+  #post 'posts/new' => 'posts#create'
 end
