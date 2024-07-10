@@ -16,20 +16,18 @@
          <%= f.label :title, '作業タイトル', class: "pt-3" %><br/>
            <%= f.text_field :title, class: "w-100" %><br/>
 
-         <%= f.label :reference_site, '参照サイトURL', class: "pt-3" %><br/>
-           <%= f.text_field :reference_site, class: "w-100" %><br/>
+         <%= f.label :reference_site, '参照サイトURL', class: "pt-3"  %><br/>
+           <%= f.text_field :reference_site,  class: "w-100" %><br/>
+           <p class="text-right my-1">※特にない場合は「なし」と入力</p>
 
-         <%= f.label :products_used, '使用した商品', class: "pt-3" %><br/>
+         <%= f.label :products_used, '使用した商品' %><br/>
            <%= f.text_field :products_used, class: "w-100" %><br/>
+           <p class="text-right my-1">※特にない場合は「なし」と入力</p>
 
+　　　　 <h5>作業</h5>
 
-           <%# (1..10).each do |index| %>
-            <%#= f.label :"text#{index}", "#{index}.", class: "pt-3" %><br/>
-            <%#= f.text_area :"text#{index}", class: "pt-3 w-100" %></br>
-            <%#= f.file_field :"image#{index}" %><br/>
-           <%# end %>
          <%= f.fields_for :processimages do |ff| %>
-           <%= ff.text_area :text %><br>
+           <%= ff.text_area :text,  class: "w-100"  %><br>
            <%= ff.file_field :image %><br><br>
          <% end %>
 

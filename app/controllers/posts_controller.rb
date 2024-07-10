@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      #@post_form.save_post #バリデーション結果、エラーなしの場合true,エラーありの場合falseを返す
       flash[:notice] = "投稿に成功しました。"
      redirect_to posts_path
     else

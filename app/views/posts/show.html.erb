@@ -24,12 +24,15 @@
         <h4 class="pt-3">作業タイトル</h4>
         <p><%= @post.title %></p>
 
+        <% if @tags.exists? %>
          <h4 class="pt-3">付けられたタグ</h4>
           <% @post.tags.each do |tag| %>
           <%= link_to search_tag_path(tag_id: tag.id), class: "btn btn-outline-secondary rounded-pill btn-sm" do %>
           #<%= tag.name %>
           <% end %>
           <% end %>
+        <% else %>
+        <% end %>
 
         <h4 class="pt-3">作業工程</h4>
 
@@ -60,7 +63,7 @@
         <% if current_user.id == @post.user.id %>
          <%= link_to "投稿を削除", post_path(@post.id), method: :delete , class: 'text-white btn btn-secondary m-2' %>
         <% else %>
-         <%= link_to "この投稿者の愛車自慢を見る", user_path(@post.user), class: 'text-white btn btn-secondary m-2'  %>
+         <%= link_to "この投稿者のプロフィールを見る", user_path(@post.user), class: 'text-white btn btn-secondary m-2'  %>
         <% end %>
 
         <!-- いいね機能 -->

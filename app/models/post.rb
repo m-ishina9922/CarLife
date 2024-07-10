@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   #:processimagesを子レコードとして作成、:textと:imageが空の時はパラメーターを削除する
   accepts_nested_attributes_for :processimages, reject_if: proc { |attributes| attributes['text'].blank? && attributes['image'].blank? }, allow_destroy: true
 
+
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
@@ -17,7 +18,10 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy #中間テーブル
   has_many :tags, through: :post_tags, dependent: :destroy
 
+  #バリデーション記述
+  validates_associated :processimages
   validates :title, presence: true
+  validates :processimages, presence: true
 
 
   #検索方法の条件分岐

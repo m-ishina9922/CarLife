@@ -3,5 +3,6 @@ class Processimage < ApplicationRecord
 
   belongs_to :post
 
-  #validates :text, presence: true
+  validates :text, presence: true
+
 end
