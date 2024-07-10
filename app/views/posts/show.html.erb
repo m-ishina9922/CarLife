@@ -36,18 +36,20 @@
 
         <h4 class="pt-3">作業工程</h4>
 
-        <% @post.processimages.each.with_index(1) do |processimage, i| %>
-         <p>
-            <div class="border-bottom py-3">
+       <% @post.processimages.each.with_index(1) do |processimage, i| %>
+           <p>
+            <div class="border-bottom py-3 d-flex">
              <%= i %>.
              <% if processimage.image.attached? %>
                <%= image_tag processimage.image.variant(resize_and_pad: [200, 200]) %>
              <% else %>
                <%= image_tag 'no_image.jpg', size: "130x130" %>
              <% end %>
-              <a><%= processimage.text %></a>
+            </p>
+            <p>
+              <%= processimage.text %>
+            </p>
             </div>
-         </p>
         <% end %>
 
         <h4 class="pt-3">参考にしたサイトURL</h4>
