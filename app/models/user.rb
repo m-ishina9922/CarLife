@@ -17,7 +17,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [50, 50]).processed
+    profile_image.variant(resize_to_limit: [100, 100]).processed
   end
 
     def get_car_images
@@ -25,7 +25,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       car_images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    car_images.variant(resize_to_limit: [100, 100]).processed
+    car_images.variant(resize_and_pad: [200, 130]).processed
   end
 
   #退会済みのユーザーが同じアカウントでログインできないようにする

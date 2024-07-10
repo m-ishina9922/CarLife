@@ -9,7 +9,7 @@
          <% if @model == "User" %>
          <h3 class="w-100">検索結果：<%= @users.count %>件</h3>
          <div class="row">
-          <div class="col-10 d-flex flex-wrap">
+          <div class="col-12 d-flex flex-wrap">
              <% @users.each do |user| %>
                <div class="border m-2 " style="height: 15rem; width: 12rem;"><!-- １セットのcol -->
                  <%= link_to user_path(user.id) do %>
