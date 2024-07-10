@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2024_05_16_011628) do
   create_table "processimages", force: :cascade do |t|
     t.integer "post_id"
     t.string "text"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
