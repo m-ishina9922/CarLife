@@ -1,19 +1,30 @@
-<h1>ユーザー情報</h1>
+<div class="container-breakpoint">
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <h3 class="p-4 text-white" style="background-color: gray;">ユーザー情報</h3>
+      <div class="user-profile">
+       <div class="mx-3">
 
-<h4>ユーザーID</h4>
- <p><%= @user.id %></p>
+        <table class="table border">
+         <ul>
+          <tr>
+           <th>id</th><th>ユーザー名</th><th>Email</th><th>会員ステータス</th>
+          </tr>
 
-<h4>ユーザー名</h4>
- <p><%= @user.name %></p>
-
-<h4>メールアドレス</h4>
- <p><%= @user.email %></p>
-
-<h4>会員ステータス</h4>
-   <p>
-    <% if @user.is_valid == true %>
-     一般会員
-    <% else %>
-    退会済み
-    <% end %>
-   </p>
+          <tr>
+           <td><%= @user.id %></td>
+           <td><%= @user.name %></td>
+           <td><%= @user.email %></td>
+           <td>
+            <% if @user.is_valid == true %>
+              一般会員
+            <% else %>
+              退会済み
+            <% end %>
+            </td>
+          </tr>
+         </ul>
+        </table>
+        <p class="text-right"><%= link_to "前のページに戻る",admin_dashboards_path, class: "btn btn-secondary btn-sm text-white"  %></p>
+   </div>
+</div><!--container-->

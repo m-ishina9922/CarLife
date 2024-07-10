@@ -1,8 +1,21 @@
-<h4>コメント一覧</h4>
-<% @post_comments.each do |comment| %>
-<table>
+<div class="card-list-container-breakpoint">
+   <div class="row">
+      <div class="col-8 mx-auto">
+       <div class="h4 my-4 ">コメント一覧</div>
+        <ul>
+         <table class="table boeder">
+          <p>
+           <tr><th>ユーザー名</th><th>コメント</th><th>コメント日時</th><th></th></tr>
+　　　　　　<% @post_comments.each do |comment| %>
+            <tr><td><%= comment.user.name %></td>
+            <td><%= comment.comment %></td>
+            <td><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= link_to "削除", admin_post_comments_path(id: comment.id), method: :delete , data: { confirm: '本当に削除しますか?' }, class: "btn btn-secondary btn-sm text-white"  %></td>
+            </tr>
+           <% end %>
+           </table>
+        </ul>
+     </div>
+   </div><!--row-->
+</div><!--container-->
 
- <%= comment.user.name %><%= comment.comment %><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
- <%= link_to "削除", admin_post_comments_path(id: comment.id), method: :delete , data: { confirm: '本当に削除しますか?' } %></br>
-</table>
-<% end %>

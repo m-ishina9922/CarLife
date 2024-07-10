@@ -1,23 +1,20 @@
 <div class="card-list-container-breakpoint">
    <div class="row">
-      <div class="col-xl-2" style="background-color: gray;">
-       <h4>管理者</h4><!--サイドバー-->
-         <%= link_to "コメント一覧", admin_post_comments_path , class: "text-white" %>
-      </div><!--サイドパーcol-xl-4-->
-
-      <div class="col-10">
-       <div class="h4 my-4 border-bottom">ユーザー一覧</div>
+      <div class="col-8 mx-auto">
+       <div class="h4 my-4 ">ユーザー一覧</div>
         <ul>
-         <% @users.each do |user| %>
-         <table>
+         <table class="table boeder">
           <p>
-           <%= user.id %> -
-           <%= user.name %> -
-           <%= user.email %> -
-           <%= link_to '詳細', admin_user_path(user.id) %>
-           <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' } %></p>
+           <tr><th>id</th><th>ユーザー名</th><th>Email</th><th></th><th></th></tr>
+           <% @users.each do |user| %>
+            <tr><td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to '詳細', admin_user_path(user.id), class: "btn btn-secondary btn-sm text-white" %></td>
+            <td><%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-secondary btn-sm text-white" %></p></td>
+            </tr>
+           <% end %>
            </table>
-         <% end %>
         </ul>
      </div>
    </div><!--row-->
