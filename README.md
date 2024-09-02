@@ -33,7 +33,7 @@
 ## 設計書
 - テーブル定義書:https://docs.google.com/spreadsheets/d/1b-F4Zu5UZGoU4reC47yBFvgixYu_GOuuVITh5meGlc0/edit?usp=sharing.
 - ワイヤーフレーム:https://drive.google.com/file/d/1T-xVOQF306DdW6Vbtqwbl-qbcXyJploA/view?usp=sharing.
-- アプリケーション設計書:https://drive.google.com/file/d/1T-xVOQF306DdW6Vbtqwbl-qbcXyJploA/view?usp=sharing.
+- アプリケーション設計書:https://docs.google.com/spreadsheets/d/1bw_-CjD5wSQBJsfMnyuOs-2tQiAtGDgu/edit?usp=sharing&ouid=100682096464976367847&rtpof=true&sd=true
 - 実装機能リストURL:https://docs.google.com/spreadsheets/d/1A6Bv3Ue21Kzq_AxZRkFEGmJ03Qe8aaaaPAexM4Aa7Dk/edit?usp=sharing.
 
 ## 開発環境
