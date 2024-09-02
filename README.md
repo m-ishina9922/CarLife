@@ -31,18 +31,10 @@
 
 
 ## 設計書
-- テーブル定義書.
--
-  https://docs.google.com/spreadsheets/d/1b-F4Zu5UZGoU4reC47yBFvgixYu_GOuuVITh5meGlc0/edit?usp=sharing.
-- ワイヤーフレーム.
--
-  https://drive.google.com/file/d/1T-xVOQF306DdW6Vbtqwbl-qbcXyJploA/view?usp=sharing.
-- アプリケーション設計書.
--
-  https://drive.google.com/file/d/1T-xVOQF306DdW6Vbtqwbl-qbcXyJploA/view?usp=sharing.
-- 実装機能リストURL.
--
-  https://docs.google.com/spreadsheets/d/1A6Bv3Ue21Kzq_AxZRkFEGmJ03Qe8aaaaPAexM4Aa7Dk/edit?usp=sharing.
+- テーブル定義書:https://docs.google.com/spreadsheets/d/1b-F4Zu5UZGoU4reC47yBFvgixYu_GOuuVITh5meGlc0/edit?usp=sharing.
+- ワイヤーフレーム:https://drive.google.com/file/d/1T-xVOQF306DdW6Vbtqwbl-qbcXyJploA/view?usp=sharing.
+- アプリケーション設計書:https://drive.google.com/file/d/1T-xVOQF306DdW6Vbtqwbl-qbcXyJploA/view?usp=sharing.
+- 実装機能リストURL:https://docs.google.com/spreadsheets/d/1A6Bv3Ue21Kzq_AxZRkFEGmJ03Qe8aaaaPAexM4Aa7Dk/edit?usp=sharing.
 
 ## 開発環境
 - OS：Linux(CentOS)
